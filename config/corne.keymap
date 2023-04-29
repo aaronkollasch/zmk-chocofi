@@ -22,9 +22,9 @@
             };
         };
         behaviors {
-            espalt: esc_space_alt {
+            espmod: esc_space_mod {
                 compatible = "zmk,behavior-hold-tap";
-                label = "ESC_SPACE_ALT";
+                label = "ESC_SPACE_MOD";
                 #binding-cells = <2>;
                 flavor = "hold-preferred";
                 tapping-term-ms = <400>;
@@ -40,25 +40,25 @@
 // |  TAB |  Q   |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P   | BKSP |
 // |  ESC |  A   |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;   |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |//SHFT| ESC  |
-//            | ESC/ALT | GUI | TAB/CTRL |   | ENT | SPC/LWR | BKSP/RSE |
+//            | TAB/ALT | GUI | ESC/CTRL |   | ENT | SPC/LWR | BKSP/RSE |
                         bindings = <
    &kp TAB   &kp Q       &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P          &kp BSPC
    &kp ESC   &kp A       &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI       &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &mt RSHFT FSLH &kp ESC
-             &mt LALT ESC &kp LGUI &mt LCTRL TAB   &kp RET &lt 1 SPACE &lt 2 BSPC
+             &mt LALT TAB &kp LGUI &mt LCTRL ESC   &kp RET &lt 1 SPACE &lt 2 BSPC
                         >;
                 };
                 lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// |  ESC |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |BTCLR| BT1 | BT2 | BT3 | BT4 |   |     |     |     |     |     |      |
-//             | EscSPC/ALT | GUI | CTRL|   | ENT |     |     |
+// |  ESC |BTCLR|     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
+// | SHFT | BT1 | BT2 | BT3 | BT4 | BT5 |   |     | DEL |     |     |      |
+//              | ALT | GUI |EscSPC/CTRL|   |LYR3?|     |     |
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp ESC    &trans       &trans       &trans       &trans       &trans         &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &trans   &trans   &trans &trans    &trans &trans
-                                    &espalt LALT ESC &kp LGUI     &kp LCTRL      &kp RET  &trans   &trans
+   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8  &kp N9    &kp N0 &kp BSPC
+   &kp ESC    &bt BT_CLR   &trans       &trans       &trans       &trans         &kp LEFT &kp DOWN &kp UP  &kp RIGHT &trans &trans
+   &kp LSHFT  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans   &kp DEL  &trans  &trans    &trans &trans
+                                        &kp LALT     &kp LGUI &espmod LCTRL ESC  &trans   &trans   &trans
                         >;
                 };
 
@@ -67,12 +67,12 @@
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
 // | CTRL |  `  |  ~  |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // | SHFT | SHFT|     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | ALT | GUI | CTRL|   | ENT |     |     |
+//                    | ALT | GUI | CTRL|   |LYR4?|     |     |
                         bindings = <
    &kp  TAB  &kp EXCL  &kp AT    &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
    &kp LCTRL &kp GRAVE &kp TILDE &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &kp LSHFT    &trans    &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                                 &kp LALT &kp LGUI &kp LCTRL   &kp RET   &trans    &trans
+   &kp LSHFT &kp LSHFT    &trans    &trans   &trans   &trans   &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
+                                 &kp LALT &kp LGUI &kp LCTRL   &trans    &trans    &trans
                         >;
                 };
         };
