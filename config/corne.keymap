@@ -65,8 +65,8 @@
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |  `  |  ~  |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT | SHFT|     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+// | CTRL |  `  |  ~  |Resrv|     |Resrv|   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | SHFT | SHFT|     |     |Resrv|     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | ALT | GUI | CTRL|   |LYR4?|     |     |
                         bindings = <
    &kp  TAB  &kp EXCL  &kp AT    &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
