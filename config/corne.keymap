@@ -110,14 +110,14 @@
 
                 sym_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  &  |  *  |  (  |  )  |  \  | BKSP |
-// |  ESC |  ^  |  =  |Resrv|  _  |Resrv|   |  -  | CMD | CTRL| ALT |  ' |  `   |
-// | SHFT |  `  |  ~  | "|" |Resrv|     |   |  _  |  +  |  [  |  ]  |  "  |  ~   |
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  &  |  *  |  (  |  )  |  :  | BKSP |
+// |  ESC |  ^  |  =  |Resrv|  _  |Resrv|   |  -  | CMD | CTRL| ALT |  '  |  `   |
+// | SHFT |  `  |  ~  | "|" |Resrv|  \  |   |  _  |  +  |  [  |  ]  |  "  |  ~   |
 //                   |EscSPC| NUM |     |   |     |     |     |
                         bindings = <
-   &kp  TAB  &kp EXCL  &kp AT    &kp HASH &kp DLLR  &kp PRCNT &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSLH &kp BSPC
-   &kp  ESC  &kp CARET &kp EQUAL &trans   &kp UNDER &trans    &kp MINUS &sk RGUI &sk RCTRL &sk RALT &kp SQT &kp GRAVE
-   &kp LSHFT &kp GRAVE &kp TILDE &kp PIPE &trans    &trans    &kp UNDER &kp PLUS        &kp LBKT &kp RBKT &kp DQT  &kp TILDE
+   &kp  TAB  &kp EXCL  &kp AT    &kp HASH &kp DLLR  &kp PRCNT &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR &kp COLON &kp BSPC
+   &kp  ESC  &kp CARET &kp EQUAL &trans   &kp UNDER &trans    &kp MINUS &sk RGUI        &sk RCTRL &sk RALT &kp SQT   &kp GRAVE
+   &kp LSHFT &kp GRAVE &kp TILDE &kp PIPE &trans    &kp BSLH  &kp UNDER &kp PLUS        &kp LBKT  &kp RBKT &kp DQT   &kp TILDE
                                &esc_space &trans    &trans    &trans &trans &trans
                         >;
                 };
