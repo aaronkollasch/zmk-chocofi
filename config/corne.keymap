@@ -41,12 +41,12 @@
 // // |  TAB |  Q   |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P   | BKSP |
 // // |  ESC |  A   |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;   |  '   |
 // // | SHFT |Z/SHFT|  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |//SHFT| ESC  |
-// //            | TAB/ALT | GUI | ESC/CTRL |   | ENT | SPC/LWR | BKSP/RSE |
+// //            | TAB/ALT | GUI | ESC/CTRL |   | ENT | SPC/LWR | RSE |
 //                         bindings = <
 //    &kp TAB   &kp Q       &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P          &kp BSPC
 //    &kp ESC   &kp A       &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI       &kp SQT
 //    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &mt RSHFT FSLH &kp ESC
-//              &mt LALT TAB &kp LGUI &mt LCTRL ESC   &kp RET &lt 1 SPACE &lt 2 BSPC
+//              &mt LALT TAB &kp LGUI &mt LCTRL ESC   &kp RET &lt 1 SPACE &mo 2
 //                         >;
 //                 };
 
@@ -56,12 +56,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B  |   |  J  |  L   |  U  |  Y  |  ;   | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G  |   |  M  |  N   |  E  |  I  |  O   |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V  |   |  K  |  H   |  ,  |  .  |//SHFT| ESC  |
-//            | TAB/ALT | GUI | ESC/CTRL |   | ENT | SPC/LWR | BKSP/RSE |
+//            | TAB/ALT | GUI | ESC/CTRL |   | ENT | SPC/LWR | RSE |
                         bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI       &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O          &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &mt RSHFT FSLH &kp ESC
-             &mt LALT TAB &kp LGUI &mt LCTRL ESC   &kp RET &lt 1 SPACE &lt 2 BSPC
+             &mt LALT TAB &kp LGUI &mt LCTRL ESC   &kp RET &lt 1 SPACE &mo 2
                         >;
                 };
 
