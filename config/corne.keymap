@@ -142,15 +142,15 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |  // disabled
 // |  TAB |  7  |  5  |  3  |  1  |  9  |   |  8  |  0  |  2  |  4  |  6  | BKSP |
-// |  ESC | SHFT| ALT | CTRL| CMD | ENT |   |  -  | CMD | CTRL| ALT | SHFT|      |
+// |  ESC | SHFT| ALT | CTRL| CMD | SPC |   |  -  | CMD | CTRL| ALT | SHFT|      |
 // | SHFT | FN  |     |     |  %  |  ^  |   |  +  |  *  |  /  |  .  |  FN |      |
 //                    |     |     |     |   |     |     |     |
                         bindings = <
-// &kp TAB &kp N1    &kp N2   &kp N3    &kp N4   &kp N5  &kp N6    &kp N7   &kp N8    &kp N9   &kp N0    &kp BSPC
-   &kp TAB &kp N7    &kp N5   &kp N3    &kp N1   &kp N9  &kp N8    &kp N0   &kp N2    &kp N4   &kp N6    &kp BSPC
-   &kp ESC &sk LSHFT &sk LALT &sk LCTRL &sk LGUI &kp RET &kp MINUS &sk RGUI &sk RCTRL &sk RALT &sk RSHFT &trans
-   &kp TAB &mo 4     &trans   &trans    &trans   &trans  &kp PLUS  &kp STAR &kp FSLH  &kp DOT  &mo 4     &trans
-                              &trans    &trans   &trans  &trans  &trans   &trans
+// &kp TAB &kp N1    &kp N2   &kp N3    &kp N4   &kp N5    &kp N6    &kp N7   &kp N8    &kp N9   &kp N0    &kp BSPC
+   &kp TAB &kp N7    &kp N5   &kp N3    &kp N1   &kp N9    &kp N8    &kp N0   &kp N2    &kp N4   &kp N6    &kp BSPC
+   &kp ESC &sk LSHFT &sk LALT &sk LCTRL &sk LGUI &kp SPACE &kp MINUS &sk RGUI &sk RCTRL &sk RALT &sk RSHFT &trans
+   &kp TAB &mo 4     &trans   &trans    &trans   &trans    &kp PLUS  &kp STAR &kp FSLH  &kp DOT  &mo 4     &trans
+                              &trans    &trans   &trans    &trans  &trans   &trans
                         >;
                 };
 
