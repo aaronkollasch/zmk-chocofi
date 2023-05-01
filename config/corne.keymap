@@ -60,6 +60,22 @@
             //     quick-tap-ms = <200>;
             //     bindings = <&kp>, <&esc_space>;
             // };
+            lthp: layer_tap_hold_preferred {
+                compatible = "zmk,behavior-hold-tap";
+                label = "LAYER_TAP_HOLD_PREFERRED";
+                #binding-cells = <2>;
+                flavor = "hold-preferred";
+                tapping-term-ms = <200>;
+                bindings = <&mo>, <&kp>;
+            };
+            ltb: layer_tap_balanced {
+                compatible = "zmk,behavior-hold-tap";
+                label = "LAYER_TAP_BALANCED";
+                #binding-cells = <2>;
+                flavor = "balanced";
+                tapping-term-ms = <200>;
+                bindings = <&mo>, <&kp>;
+            };
         };
         keymap {
                 compatible = "zmk,keymap";
@@ -85,12 +101,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U   |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E   |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,   |  .  |  /  | ESC  |
-//               | ESC/CTRL | NAV | ESC/SHFT |   | ENT | SPC/NAV | SYM |
+//            | ESC/CTRL | NAV | ESC/SHFT |   | ENT/NAV | SPC/SYM | BKSP |
                         bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-             &mt LCTRL ESC &sl 1 &mt LSHFT ESC   &kp RET &lt 1 SPACE &sl 2
+               &mt LCTRL ESC &mo 1 &mt LSHFT ESC   &lt 1 RET &ltb 2 SPACE &kp BSPC
                         >;
                 };
 
