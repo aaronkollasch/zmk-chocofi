@@ -22,16 +22,16 @@
             };
         };
         macros {
-            esc_space: esc_space {
-                label = "ZM_esc_space";
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_press &kp ESC>
-                    , <&macro_tap &kp SPACE>
-                    , <&macro_release &kp ESC>
-                    ;
-            };
+            // esc_space: esc_space {
+            //     label = "ZM_esc_space";
+            //     compatible = "zmk,behavior-macro";
+            //     #binding-cells = <0>;
+            //     bindings
+            //         = <&macro_press &kp ESC>
+            //         , <&macro_tap &kp SPACE>
+            //         , <&macro_release &kp ESC>
+            //         ;
+            // };
             page_fwd: page_fwd {
                 label = "ZM_page_fwd";
                 compatible = "zmk,behavior-macro";
@@ -81,19 +81,25 @@
         combos {
             compatible = "zmk,combos";
             combo_esc {
+                // conflicts with Qwerty "we"
                 key-positions = <2 3>;
                 bindings = <&kp ESC>;
-            };
-            combo_bsp {
-                key-positions = <8 9>;
-                bindings = <&kp BSPC>;
             };
             combo_tab {
                 key-positions = <26 27>;
                 bindings = <&kp TAB>;
             };
+            combo_bsp {
+                key-positions = <8 9>;
+                // not needed in first layer
+                // conflicts with SYM layer "()"
+                layers = <3 4>;
+                bindings = <&kp BSPC>;
+            };
             combo_ent {
                 key-positions = <32 33>;
+                // conflicts with SYM layer "[]"
+                layers = <0 1 3 4>;
                 bindings = <&kp RET>;
             };
         };
@@ -121,12 +127,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U   |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E   |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,   |  .  |  /  | ESC  |
-//            | ESC/CTRL | NAV | ESC/SHFT |   | ENT/NAV | SPC/SYM | BKSP |
+//                    | CTRL | NAV | SHFT |   | NAV | SPC/SYM | BKSP |
                         bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-               &mt LCTRL ESC &mo 1 &mt LSHFT ESC   &lt 1 RET &ltb 2 SPACE &kp BSPC
+                       &kp LCTRL &mo 1 &kp LSHFT   &mo 1 &ltb 2 SPACE &kp BSPC
                         >;
                 };
 
@@ -149,12 +155,12 @@
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  &  |  *  |  (  |  )  |  :  | BKSP |
 // |  ESC |  `  |  ~  |  =  |  _  |Resrv|   |  -  | CMD | ALT | CTRL|  '  |  `   |
 // | SHFT |     | "|" |  \  |Resrv|  ^  |   |  +  |  *  |  [  |  ]  |  "  |  ~   |
-//                   |EscSPC| NUM |     |   |     |     |     |
+//                    |     | NUM |     |   |     |     |     |
                         bindings = <
    &kp  TAB  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT &kp AMPS  &kp STAR &kp LPAR &kp RPAR  &kp COLON &kp BSPC
    &kp  ESC  &kp GRAVE &kp TILDE &kp EQUAL &kp UNDER &trans    &kp MINUS &sk RGUI &sk RALT &sk RCTRL &kp SQT   &kp GRAVE
    &kp LSHFT &kp CARET &kp PIPE  &kp BSLH  &trans    &kp CARET &kp PLUS  &kp STAR &kp LBKT &kp RBKT  &kp DQT   &kp TILDE
-                               &esc_space  &trans    &trans    &trans &trans &trans
+                                 &trans    &trans    &trans    &trans &trans &trans
                         >;
                 };
 
