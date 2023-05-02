@@ -61,6 +61,14 @@
             //     quick-tap-ms = <200>;
             //     bindings = <&kp>, <&esc_space>;
             // };
+            skht: sticky_key_hold_tap {
+                compatible = "zmk,behavior-hold-tap";
+                label = "STICKY_KEY_HOLD_TAP";
+                #binding-cells = <2>;
+                flavor = "balanced";
+                tapping-term-ms = <200>;
+                bindings = <&kp>, <&sk>;
+            };
             lthp: layer_tap_hold_preferred {
                 compatible = "zmk,behavior-hold-tap";
                 label = "LAYER_TAP_HOLD_PREFERRED";
@@ -127,12 +135,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U   |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E   |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,   |  .  |  /  | ESC  |
-//                    | CTRL | NAV | SHFT |   | NAV | SPC/SYM | BKSP |
+//                | CMD/CTRL | NAV | SHFT |   | NAV | SPC/SYM | BKSP |
                         bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                       &kp LCTRL &mo 1 &kp LSHFT   &mo 1 &ltb 2 SPACE &kp BSPC
+                &skht LCTRL LGUI &mo 1 &kp LSHFT   &mo 1 &ltb 2 SPACE &kp BSPC
                         >;
                 };
 
