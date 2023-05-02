@@ -88,14 +88,14 @@
         };
         combos {
             compatible = "zmk,combos";
-            combo_esc {
+            combo_tab {
                 // conflicts with Qwerty "we"
                 key-positions = <2 3>;
-                bindings = <&kp ESC>;
-            };
-            combo_tab {
-                key-positions = <26 27>;
                 bindings = <&kp TAB>;
+            };
+            combo_esc {
+                key-positions = <26 27>;
+                bindings = <&kp ESC>;
             };
             combo_bsp {
                 key-positions = <8 9>;
