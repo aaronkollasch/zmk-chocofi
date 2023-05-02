@@ -78,6 +78,25 @@
                 bindings = <&mo>, <&kp>;
             };
         };
+        combos {
+            compatible = "zmk,combos";
+            combo_esc {
+                key-positions = <2 3>;
+                bindings = <&kp ESC>;
+            };
+            combo_bsp {
+                key-positions = <8 9>;
+                bindings = <&kp BSPC>;
+            };
+            combo_tab {
+                key-positions = <26 27>;
+                bindings = <&kp TAB>;
+            };
+            combo_ent {
+                key-positions = <32 33>;
+                bindings = <&kp RET>;
+            };
+        };
         keymap {
                 compatible = "zmk,keymap";
 
