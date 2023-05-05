@@ -9,19 +9,60 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+// layers ID definition
+#define DEF 0
+#define DEF_OSX 1
+#define NAV  2
+#define NAV_OSX  3
+#define SYM  4
+#define NUM  5
+#define FUN   6
+#define SYS  7
+
+// macros definition
+#define meh LC(LS(LALT))
+#define hyper LG(LC(LS(LALT)))
+#define deg RA(LS(SEMI))
+#define prev_tab LS(LC(TAB))
+#define next_tab LC(TAB)
+
+// OSX specific macros
+#define undo_OSX LG(Z)
+#define redo_OSX LG(LS(Z))
+#define prev_screen_OSX LC(LEFT)
+#define next_screen_OSX LC(RIGHT)
+#define prev_win_OSX LG(TAB)
+#define next_win_OSX LG(LS(TAB))
+#define prev_page_OSX LG(LBKT)
+#define next_page_OSX LG(RBKT)
+
+// Windows/Linux specific macros
+#define undo LC(Z)
+#define redo LC(LS(Z))
+#define prev_screen LC(LG(LEFT))
+#define next_screen LC(LG(RIGHT))
+#define prev_win LA(TAB)
+#define next_win LA(LS(TAB))
+#define prev_page LC(LBKT)
+#define next_page LC(RBKT)
+
 &sk {
-    release-after-ms = <2000>;
+    release-after-ms = <1000>;
 };
 &sl {
-    release-after-ms = <5000>;
+    release-after-ms = <2000>;
 };
 
 / {
         conditional_layers {
             compatible = "zmk,conditional-layers";
             tri_layer {
-                if-layers = <1 2>;
-                then-layer = <3>;
+                if-layers = <NAV SYM>;
+                then-layer = <NUM>;
+            };
+            tri_osx_layer {
+                if-layers = <NAV_OSX SYM>;
+                then-layer = <NUM>;
             };
         };
         macros {
@@ -35,24 +76,6 @@
             //         , <&macro_release &kp ESC>
             //         ;
             // };
-            page_fwd: page_fwd {
-                label = "ZM_page_fwd";
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_tap &kp LG(RBKT)>
-                    , <&macro_tap &kp LC(RBKT)>
-                    ;
-            };
-            page_back: page_back {
-                label = "ZM_page_back";
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings
-                    = <&macro_tap &kp LG(LBKT)>
-                    , <&macro_tap &kp LC(LBKT)>
-                    ;
-            };
         };
         behaviors {
             // espmod: esc_space_mod {
@@ -87,6 +110,31 @@
                 flavor = "balanced";
                 tapping-term-ms = <200>;
                 bindings = <&mo>, <&kp>;
+            };
+            ltbr: layer_tap_balanced_repeat {
+                compatible = "zmk,behavior-hold-tap";
+                label = "LAYER_TAP_BALANCED_REPEAT";
+                #binding-cells = <2>;
+                flavor = "balanced";
+                tapping-term-ms = <200>;
+                bindings = <&mo>, <&key_repeat>;
+            };
+
+            pc_connect: pc_connect{
+                label = "ZM_PC_CONNECT";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                wait-ms = <100>;
+                tap-ms = <5>;
+                bindings = <&bt BT_SEL 1 &to DEF>;
+            };
+            osx_connect: osx_connect{
+                label = "ZM_OSX_CONNECT";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                wait-ms = <100>;
+                tap-ms = <5>;
+                bindings = <&bt BT_SEL 0 &to DEF_OSX>;
             };
         };
         combos {
@@ -135,29 +183,57 @@
 // Colemak-DH
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U   |  Y  |  ;  | BKSP |
-// |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E   |  I  |  O  |  '   |
-// | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,   |  .  |  /  | ESC  |
-//                | CMD/CTRL | NAV | SHFT |   | NAV | SPC/SYM | BKSP |
+// |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
+// |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
+// | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
+//            | CMD/CTRL | NAV/RPT | SHFT |   | NAV | SPC/SYM | BKSP |
                         bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                &skht LCTRL LGUI &mo 1 &kp LSHFT   &mo 1 &ltb 2 SPACE &kp BSPC
+          &skht LCTRL LGUI &ltbr NAV 0 &sk LSHFT   &mo NAV &ltb SYM SPACE &kp BSPC
+                        >;
+                };
+
+                default_osx_layer {
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
+// |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
+// | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
+//            | CMD/CTRL | NAV/RPT | SHFT |   | NAV | SPC/SYM | BKSP |
+                        bindings = <
+   &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
+   &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
+   &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
+      &skht LCTRL LGUI &ltbr NAV_OSX 0 &sk LSHFT   &mo NAV_OSX &ltb SYM SPACE &kp BSPC
                         >;
                 };
 
                 nav_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB  |  `   | TAB  | TAB LEFT | TAB RIGHT | VOL UP |  | HOME |      |      | END |     | BKSP |
-// | ESC  | SHFT | CTRL | ALT      | CMD       | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT |      |
-// | SHFT |      |      | BACK     | FWD       | PLAY   |  | BKSP | PGDN | PGUP | DEL |     |      |
-//                                 | SYS  |      |      |  |      | NUM  |      |
+// | TAB  | `    | TAB  | TAB LFT | TAB RGT | VOL UP |  | HOME |     |    | END | SCR LFT | BKSP |
+// | ESC  | SHFT | CTRL | ALT     | CMD     | VOL DN |  | LFT  | DWN | UP | RGT | ENT     |      |
+// | SHFT |      |      | BACK    | FWD     | MUTE   |  | BKSP |     |    | DEL | SCR RGT |      |
+//                              | SYS  |    | PLAY   |  |      | NUM  | DEL  |
                         bindings = <
-   &kp TAB   &kp GRAVE &kp TAB   &kp LS(LC(TAB)) &kp LC(TAB) &kp C_VOL_UP     &kp HOME &kp N0    &kp N2    &kp END   &kp N6  &kp BSPC
-   &kp ESC   &sk LSHFT &sk LCTRL &sk LALT        &sk LGUI    &kp C_VOL_DN     &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp RET &trans
-   &kp LSHFT &kp LSHFT &trans    &page_back      &page_fwd   &kp C_PLAY_PAUSE &kp BSPC &kp PG_DN &kp PG_UP &kp DEL   &trans  &trans
-                                                         &sl 5 &trans &trans  &trans &trans &trans
+   &kp TAB   &kp GRAVE &kp TAB   &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp prev_screen &kp BSPC
+   &kp ESC   &sk LSHFT &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp RET         &none
+   &kp LSHFT &kp undo  &kp redo  &kp prev_page &kp next_page &kp C_MUTE   &kp BSPC &none     &none     &kp DEL   &kp next_screen &none
+                                          &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
+                        >;
+                };
+
+                nav_osx_layer {
+// -----------------------------------------------------------------------------------------
+// | TAB  |  `   | TAB  | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BSPC |
+// | ESC  | SHFT | CTRL | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
+// | SHFT | UNDO | REDO | BACK    | FWD     | MUTE   |  | BKSP |      |      | DEL | SCR RGT |      |
+//                            | SYS  |      | PLAY   |  |      | NUM  | DEL  |
+                        bindings = <
+   &kp TAB   &kp GRAVE    &kp TAB      &kp prev_tab      &kp next_tab      &kp C_VOL_UP &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp prev_screen_OSX &kp BSPC
+   &kp ESC   &sk LSHFT    &sk LCTRL    &sk LALT          &sk LGUI          &kp C_VOL_DN &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp RET             &none
+   &kp LSHFT &kp undo_OSX &kp redo_OSX &kp prev_page_OSX &kp next_page_OSX &kp C_MUTE   &kp BSPC &none     &none     &kp DEL   &kp next_screen_OSX &none
+                                                        &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
                         >;
                 };
 
@@ -180,18 +256,18 @@
 // |  TAB |  1  |  2   |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |  // disabled
 // |  TAB |  7  |  5   |  3  |  1  |  9  |   |  8  |  0  |  2  |  4  |  6  | BKSP |
 // |  ESC | SHFT| CTRL | ALT | CMD | SPC |   |  -  | CMD | CTRL| ALT | SHFT|      |
-// | SHFT | FN  |      |     |  %  |  ^  |   |  +  |  *  |  /  |  .  |  FN |      |
+// | SHFT | FUN |      |     |  %  |  ^  |   |  +  |  *  |  /  |  .  | FUN |      |
 //                     |     |     |     |   |     |     |     |
                         bindings = <
 // &kp TAB &kp N1    &kp N2    &kp N3   &kp N4   &kp N5    &kp N6    &kp N7   &kp N8   &kp N9    &kp N0    &kp BSPC
    &kp TAB &kp N7    &kp N5    &kp N3   &kp N1   &kp N9    &kp N8    &kp N0   &kp N2   &kp N4    &kp N6    &kp BSPC
    &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp SPACE &kp MINUS &sk RGUI &sk RALT &sk RCTRL &sk RSHFT &trans
-   &kp TAB &mo 4     &trans    &trans   &trans   &trans    &kp PLUS  &kp STAR &kp FSLH &kp DOT   &mo 4     &trans
+   &kp TAB &mo FUN   &trans    &trans   &trans   &trans    &kp PLUS  &kp STAR &kp FSLH &kp DOT   &mo FUN   &trans
                                &trans   &trans   &trans    &trans    &trans   &trans
                         >;
                 };
 
-                fn_layer {
+                fun_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB | F7  | F5  | F3  | F1  | F9  |   | F8  | F10 | F2  | F4  | F6  | BKSP |
 // |  ESC | SHFT| CTRL| ALT | CMD | F11 |   | F10 | CMD | ALT | CTRL| SHFT|      |
@@ -207,15 +283,15 @@
 
                 sys_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |BTCLR|     |       |         |        |   |      |      |      |     |     | BKSP |
-// |  ESC | BT1 | BT2 | BT3   | BT4     | BT5    |   |      |      |      |     |     |      |
-// | SHFT |     |     | Reset |ExtPwrOff|ExtPwrOn|   |      |      |      |     |     |      |
-//                    |       | DEF     |        |   |      | DEF  |      |
+// |  TAB |BTCLR|     | DEF        | DEF_OSX     |        |   |       |      |      |     |     | BKSP |
+// |  ESC | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |      |
+// | SHFT | BT4 |     |            | ExtPwrOff   |ExtPwrOn|   |       |      |      |     |     |      |
+//                    |            |             |        |   |       |      |      |
                         bindings = <
-   &kp TAB   &bt BT_CLR   &trans       &trans       &trans            &trans           &trans &trans &trans &trans &trans &kp BSPC
-   &kp ESC   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3      &bt BT_SEL 4     &trans &trans &trans &trans &trans &trans
-   &kp LSHFT &trans       &trans       &sys_reset   &ext_power EP_OFF &ext_power EP_ON &trans &trans &trans &trans &trans &trans
-                                                  &trans &to 0 &trans &trans &to 0 &trans
+   &kp TAB   &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &trans           &trans     &trans &trans &trans &trans &kp BSPC
+   &kp ESC   &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect      &sys_reset       &sys_reset &trans &trans &trans &trans &trans
+   &kp LSHFT &bt BT_SEL 4 &trans       &trans      &ext_power EP_OFF &ext_power EP_ON &trans     &trans &trans &trans &trans &trans
+                                                                 &trans &trans &trans &trans &trans &trans
                         >;
                 };
         };
