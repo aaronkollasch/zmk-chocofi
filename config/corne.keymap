@@ -10,41 +10,41 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 // layers ID definition
-#define DEF 0
+#define DEF     0
 #define DEF_OSX 1
-#define NAV  2
-#define NAV_OSX  3
-#define SYM  4
-#define NUM  5
-#define FUN   6
-#define SYS  7
+#define NAV     2
+#define NAV_OSX 3
+#define SYM     4
+#define NUM     5
+#define FUN     6
+#define SYS     7
 
 // macros definition
-#define meh LC(LS(LALT))
-#define hyper LG(LC(LS(LALT)))
-#define deg RA(LS(SEMI))
+#define meh      LC(LS(LALT))
+#define hyper    LG(LC(LS(LALT)))
+#define deg      RA(LS(SEMI))
 #define prev_tab LS(LC(TAB))
 #define next_tab LC(TAB)
 
 // OSX specific macros
-#define undo_OSX LG(Z)
-#define redo_OSX LG(LS(Z))
+#define undo_OSX        LG(Z)
+#define redo_OSX        LG(LS(Z))
 #define prev_screen_OSX LC(LEFT)
 #define next_screen_OSX LC(RIGHT)
-#define prev_win_OSX LG(TAB)
-#define next_win_OSX LG(LS(TAB))
-#define prev_page_OSX LG(LBKT)
-#define next_page_OSX LG(RBKT)
+#define prev_win_OSX    LG(TAB)
+#define next_win_OSX    LG(LS(TAB))
+#define prev_page_OSX   LG(LBKT)
+#define next_page_OSX   LG(RBKT)
 
 // Windows/Linux specific macros
-#define undo LC(Z)
-#define redo LC(LS(Z))
+#define undo        LC(Z)
+#define redo        LC(LS(Z))
 #define prev_screen LC(LG(LEFT))
 #define next_screen LC(LG(RIGHT))
-#define prev_win LA(TAB)
-#define next_win LA(LS(TAB))
-#define prev_page LC(LBKT)
-#define next_page LC(RBKT)
+#define prev_win    LA(TAB)
+#define next_win    LA(LS(TAB))
+#define prev_page   LC(LBKT)
+#define next_page   LC(RBKT)
 
 &sk {
     release-after-ms = <1000>;
