@@ -54,120 +54,120 @@
 };
 
 / {
-        conditional_layers {
-            compatible = "zmk,conditional-layers";
-            nav_osx_layer {
-                if-layers = <DEF_OSX NAV>;
-                then-layer = <NAV_OSX>;
-            };
-            num_layer {
-                if-layers = <NAV SYM>;
-                then-layer = <NUM>;
-            };
-            num_osx_layer {
-                if-layers = <NAV_OSX SYM>;
-                then-layer = <NUM>;
-            };
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        nav_osx_layer {
+            if-layers = <DEF_OSX NAV>;
+            then-layer = <NAV_OSX>;
         };
-        macros {
-            // esc_space: esc_space {
-            //     label = "ZM_esc_space";
-            //     compatible = "zmk,behavior-macro";
-            //     #binding-cells = <0>;
-            //     bindings
-            //         = <&macro_press &kp ESC>
-            //         , <&macro_tap &kp SPACE>
-            //         , <&macro_release &kp ESC>
-            //         ;
-            // };
+        num_layer {
+            if-layers = <NAV SYM>;
+            then-layer = <NUM>;
         };
-        behaviors {
-            // espmod: esc_space_mod {
-            //     compatible = "zmk,behavior-hold-tap";
-            //     label = "ESC_SPACE_MOD";
-            //     #binding-cells = <2>;
-            //     flavor = "hold-preferred";
-            //     tapping-term-ms = <400>;
-            //     quick-tap-ms = <200>;
-            //     bindings = <&kp>, <&esc_space>;
-            // };
-            skht: sticky_key_hold_tap {
-                compatible = "zmk,behavior-hold-tap";
-                label = "STICKY_KEY_HOLD_TAP";
-                #binding-cells = <2>;
-                flavor = "balanced";
-                tapping-term-ms = <200>;
-                bindings = <&kp>, <&sk>;
-            };
-            lthp: layer_tap_hold_preferred {
-                compatible = "zmk,behavior-hold-tap";
-                label = "LAYER_TAP_HOLD_PREFERRED";
-                #binding-cells = <2>;
-                flavor = "hold-preferred";
-                tapping-term-ms = <200>;
-                bindings = <&mo>, <&kp>;
-            };
-            ltb: layer_tap_balanced {
-                compatible = "zmk,behavior-hold-tap";
-                label = "LAYER_TAP_BALANCED";
-                #binding-cells = <2>;
-                flavor = "balanced";
-                tapping-term-ms = <200>;
-                bindings = <&mo>, <&kp>;
-            };
-            ltbr: layer_tap_balanced_repeat {
-                compatible = "zmk,behavior-hold-tap";
-                label = "LAYER_TAP_BALANCED_REPEAT";
-                #binding-cells = <2>;
-                flavor = "balanced";
-                tapping-term-ms = <200>;
-                bindings = <&mo>, <&key_repeat>;
-            };
+        num_osx_layer {
+            if-layers = <NAV_OSX SYM>;
+            then-layer = <NUM>;
+        };
+    };
+    macros {
+        // esc_space: esc_space {
+        //     label = "ZM_esc_space";
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings
+        //         = <&macro_press &kp ESC>
+        //         , <&macro_tap &kp SPACE>
+        //         , <&macro_release &kp ESC>
+        //         ;
+        // };
+    };
+    behaviors {
+        // espmod: esc_space_mod {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     label = "ESC_SPACE_MOD";
+        //     #binding-cells = <2>;
+        //     flavor = "hold-preferred";
+        //     tapping-term-ms = <400>;
+        //     quick-tap-ms = <200>;
+        //     bindings = <&kp>, <&esc_space>;
+        // };
+        skht: sticky_key_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "STICKY_KEY_HOLD_TAP";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&sk>;
+        };
+        lthp: layer_tap_hold_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_HOLD_PREFERRED";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+        ltb: layer_tap_balanced {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_BALANCED";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
+        ltbr: layer_tap_balanced_repeat {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_BALANCED_REPEAT";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&key_repeat>;
+        };
 
-            pc_connect: pc_connect{
-                label = "ZM_PC_CONNECT";
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                wait-ms = <100>;
-                tap-ms = <5>;
-                bindings = <&bt BT_SEL 1 &to DEF>;
-            };
-            osx_connect: osx_connect{
-                label = "ZM_OSX_CONNECT";
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                wait-ms = <100>;
-                tap-ms = <5>;
-                bindings = <&bt BT_SEL 0 &to DEF_OSX>;
-            };
+        pc_connect: pc_connect{
+            label = "ZM_PC_CONNECT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <100>;
+            tap-ms = <5>;
+            bindings = <&bt BT_SEL 1 &to DEF>;
         };
-        combos {
-            compatible = "zmk,combos";
-            combo_tab {
-                // conflicts with Qwerty "we"
-                key-positions = <2 3>;
-                bindings = <&kp TAB>;
-            };
-            combo_esc {
-                key-positions = <26 27>;
-                bindings = <&kp ESC>;
-            };
-            combo_bsp {
-                key-positions = <8 9>;
-                // not needed in first layer
-                // conflicts with SYM layer "()"
-                layers = <3 4>;
-                bindings = <&kp BSPC>;
-            };
-            combo_ent {
-                key-positions = <32 33>;
-                // conflicts with SYM layer "[]"
-                layers = <0 1 3 4>;
-                bindings = <&kp RET>;
-            };
+        osx_connect: osx_connect{
+            label = "ZM_OSX_CONNECT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <100>;
+            tap-ms = <5>;
+            bindings = <&bt BT_SEL 0 &to DEF_OSX>;
         };
-        keymap {
-                compatible = "zmk,keymap";
+    };
+    combos {
+        compatible = "zmk,combos";
+        combo_tab {
+            // conflicts with Qwerty "we"
+            key-positions = <2 3>;
+            bindings = <&kp TAB>;
+        };
+        combo_esc {
+            key-positions = <26 27>;
+            bindings = <&kp ESC>;
+        };
+        combo_bsp {
+            key-positions = <8 9>;
+            // not needed in first layer
+            // conflicts with SYM layer "()"
+            layers = <3 4>;
+            bindings = <&kp BSPC>;
+        };
+        combo_ent {
+            key-positions = <32 33>;
+            // conflicts with SYM layer "[]"
+            layers = <0 1 3 4>;
+            bindings = <&kp RET>;
+        };
+    };
+    keymap {
+        compatible = "zmk,keymap";
 
 // Qwerty
 //                 default_layer {
@@ -185,120 +185,120 @@
 //                 };
 
 // Colemak-DH
-                default_layer {
+        default_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
 //            | CMD/CTRL | NAV/RPT | SHFT |   | SPC/NAV | SYM | BKSP |
-                        bindings = <
+            bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
           &skht LCTRL LGUI &ltbr NAV 0 &sk LSHFT   &ltb NAV SPACE &mo SYM &kp BSPC
-                        >;
-                };
+            >;
+        };
 
-                default_osx_layer {
+        default_osx_layer {
 // -----------------------------------------------------------------------------------------
 // |      |      |     |     |     |      |   |     |     |     |     |     |      |
 // |      |      |     |     |     |      |   |     |     |     |     |     |      |
 // |      |      |     |     |     |      |   |     |     |     |     |     |      |
 //                     |     |     |      |   |     |     |     |
-                        bindings = <
+            bindings = <
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
                         &trans &trans &trans &trans &trans &trans
-                        >;
-                };
+            >;
+        };
 
-                nav_layer {
+        nav_layer {
 // -----------------------------------------------------------------------------------------
 // | TAB  | `    | TAB  | TAB LFT | TAB RGT | VOL UP |  | HOME |     |    | END | SCR LFT | BKSP |
 // | ESC  | SHFT | CTRL | ALT     | CMD     | VOL DN |  | LFT  | DWN | UP | RGT | ENT     |      |
 // | SHFT |      |      | BACK    | FWD     | MUTE   |  | BKSP |     |    | DEL | SCR RGT |      |
 //                              | SYS  |    | PLAY   |  |      | NUM  | DEL  |
-                        bindings = <
+            bindings = <
    &kp TAB   &kp GRAVE &kp TAB   &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp RET         &none
    &kp LSHFT &kp undo  &kp redo  &kp prev_page &kp next_page &kp C_MUTE   &kp BSPC &none     &none     &kp DEL   &kp next_screen &none
                                           &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
-                        >;
-                };
+            >;
+        };
 
-                nav_osx_layer {
+        nav_osx_layer {
 // -----------------------------------------------------------------------------------------
 // |      |      |      |      |      |      |  |      |      |      |      | SCR LFT |      |
 // |      |      |      |      |      |      |  |      |      |      |      |         |      |
 // |      | UNDO | REDO | BACK | FWD  |      |  |      |      |      |      | SCR RGT |      |
 //                      |      |      |      |  |      |      |      |
-                        bindings = <
+            bindings = <
    &trans &trans       &trans       &trans            &trans            &trans &trans &trans &trans &trans &kp prev_screen_OSX &trans
    &trans &trans       &trans       &trans            &trans            &trans &trans &trans &trans &trans &trans              &trans
    &trans &kp undo_OSX &kp redo_OSX &kp prev_page_OSX &kp next_page_OSX &trans &trans &trans &trans &trans &kp next_screen_OSX &trans
                                                           &trans &trans &trans &trans &trans &trans
-                        >;
-                };
+            >;
+        };
 
-                sym_layer {
+        sym_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  &  |  *  |  (  |  )  |  :  | BKSP |
 // |  ESC |  `  |  ~  |  =  |  _  |Resrv|   |  -  | CMD | ALT | CTRL|  '  |  `   |
 // | SHFT |     | "|" |  \  |Resrv|  ^  |   |  +  |  *  |  [  |  ]  |  "  |  ~   |
 //                    |     | NUM |     |   |     |     |     |
-                        bindings = <
+            bindings = <
    &kp  TAB  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT &kp AMPS  &kp STAR &kp LPAR &kp RPAR  &kp COLON &kp BSPC
    &kp  ESC  &kp GRAVE &kp TILDE &kp EQUAL &kp UNDER &trans    &kp MINUS &sk RGUI &sk RALT &sk RCTRL &kp SQT   &kp GRAVE
    &kp LSHFT &kp CARET &kp PIPE  &kp BSLH  &trans    &kp CARET &kp PLUS  &kp STAR &kp LBKT &kp RBKT  &kp DQT   &kp TILDE
                                  &trans    &trans    &trans    &trans &trans &trans
-                        >;
-                };
+            >;
+        };
 
-                num_layer {
+        num_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2   |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |  // disabled
 // |  TAB |  7  |  5   |  3  |  1  |  9  |   |  8  |  0  |  2  |  4  |  6  | BKSP |
 // |  ESC | SHFT| CTRL | ALT | CMD | SPC |   |  -  | CMD | CTRL| ALT | SHFT|      |
 // | SHFT | FUN |      |     |  %  |  ^  |   |  +  |  *  |  /  |  .  | FUN |      |
 //                     |     |     |     |   |     |     |     |
-                        bindings = <
+            bindings = <
 // &kp TAB &kp N1    &kp N2    &kp N3   &kp N4   &kp N5    &kp N6    &kp N7   &kp N8   &kp N9    &kp N0    &kp BSPC
    &kp TAB &kp N7    &kp N5    &kp N3   &kp N1   &kp N9    &kp N8    &kp N0   &kp N2   &kp N4    &kp N6    &kp BSPC
    &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp SPACE &kp MINUS &sk RGUI &sk RALT &sk RCTRL &sk RSHFT &trans
    &kp TAB &mo FUN   &trans    &trans   &trans   &trans    &kp PLUS  &kp STAR &kp FSLH &kp DOT   &mo FUN   &trans
                                &trans   &trans   &trans    &trans    &trans   &trans
-                        >;
-                };
+            >;
+        };
 
-                fun_layer {
+        fun_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB | F7  | F5  | F3  | F1  | F9  |   | F8  | F10 | F2  | F4  | F6  | BKSP |
 // |  ESC | SHFT| CTRL| ALT | CMD | F11 |   | F10 | CMD | ALT | CTRL| SHFT|      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    |     |     |     |   |     |     | SYS |
-                        bindings = <
+            bindings = <
    &kp TAB &kp F7    &kp F5   &kp F3    &kp F1   &kp F9  &kp F8  &kp F10  &kp F2    &kp F4   &kp F6    &kp BSPC
    &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp F11 &kp F12 &sk RGUI &sk RALT &sk RCTRL &sk RSHFT &trans
    &kp TAB &trans    &trans   &trans    &trans   &trans  &trans  &trans   &trans    &trans   &trans    &trans
                               &trans    &trans   &trans  &trans  &trans   &trans
-                        >;
-                };
+            >;
+        };
 
-                sys_layer {
+        sys_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |BTCLR|     | DEF        | DEF_OSX     |        |   |       |      |      |     |     | BKSP |
 // |  ESC | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |      |
 // | SHFT | BT4 |     |            | ExtPwrOff   |ExtPwrOn|   |       |      |      |     |     |      |
 //                    |            |             |        |   |       |      |      |
-                        bindings = <
+            bindings = <
    &kp TAB   &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &trans           &trans     &trans &trans &trans &trans &kp BSPC
    &kp ESC   &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect      &sys_reset       &sys_reset &trans &trans &trans &trans &trans
    &kp LSHFT &bt BT_SEL 4 &trans       &trans      &ext_power EP_OFF &ext_power EP_ON &trans     &trans &trans &trans &trans &trans
                                                                  &trans &trans &trans &trans &trans &trans
-                        >;
-                };
+            >;
         };
+    };
 };
 
 // vi: ft=dts
