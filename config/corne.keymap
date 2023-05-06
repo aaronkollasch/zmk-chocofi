@@ -190,12 +190,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
-//            | CMD/CTRL | NAV/RPT | SHFT |   | SPC/NAV | SYM | BKSP |
+//            | CMD/CTRL | NAV/RPT | SHFT |   | SPC/NAV | SPC/SYM | BKSP |
             bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-          &skht LCTRL LGUI &ltbr NAV 0 &sk LSHFT   &ltb NAV SPACE &mo SYM &kp BSPC
+          &skht LCTRL LGUI &ltbr NAV 0 &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &kp BSPC
             >;
         };
 
