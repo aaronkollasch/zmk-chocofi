@@ -56,11 +56,15 @@
 / {
         conditional_layers {
             compatible = "zmk,conditional-layers";
-            tri_layer {
+            nav_osx_layer {
+                if-layers = <DEF_OSX NAV>;
+                then-layer = <NAV_OSX>;
+            };
+            num_layer {
                 if-layers = <NAV SYM>;
                 then-layer = <NUM>;
             };
-            tri_osx_layer {
+            num_osx_layer {
                 if-layers = <NAV_OSX SYM>;
                 then-layer = <NUM>;
             };
@@ -197,15 +201,15 @@
 
                 default_osx_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
-// |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
-// | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
-//            | CMD/CTRL | NAV/RPT | SHFT |   | NAV | SPC/SYM | BKSP |
+// |      |      |     |     |     |      |   |     |     |     |     |     |      |
+// |      |      |     |     |     |      |   |     |     |     |     |     |      |
+// |      |      |     |     |     |      |   |     |     |     |     |     |      |
+//                     |     |     |      |   |     |     |     |
                         bindings = <
-   &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
-   &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
-   &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-      &skht LCTRL LGUI &ltbr NAV_OSX 0 &sk LSHFT   &mo NAV_OSX &ltb SYM SPACE &kp BSPC
+   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                        &trans &trans &trans &trans &trans &trans
                         >;
                 };
 
@@ -225,15 +229,15 @@
 
                 nav_osx_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB  |  `   | TAB  | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BSPC |
-// | ESC  | SHFT | CTRL | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
-// | SHFT | UNDO | REDO | BACK    | FWD     | MUTE   |  | BKSP |      |      | DEL | SCR RGT |      |
-//                            | SYS  |      | PLAY   |  |      | NUM  | DEL  |
+// |      |      |      |      |      |      |  |      |      |      |      | SCR LFT |      |
+// |      |      |      |      |      |      |  |      |      |      |      |         |      |
+// |      | UNDO | REDO | BACK | FWD  |      |  |      |      |      |      | SCR RGT |      |
+//                      |      |      |      |  |      |      |      |
                         bindings = <
-   &kp TAB   &kp GRAVE    &kp TAB      &kp prev_tab      &kp next_tab      &kp C_VOL_UP &kp HOME &kp PG_DN &kp PG_UP &kp END   &kp prev_screen_OSX &kp BSPC
-   &kp ESC   &sk LSHFT    &sk LCTRL    &sk LALT          &sk LGUI          &kp C_VOL_DN &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &kp RET             &none
-   &kp LSHFT &kp undo_OSX &kp redo_OSX &kp prev_page_OSX &kp next_page_OSX &kp C_MUTE   &kp BSPC &none     &none     &kp DEL   &kp next_screen_OSX &none
-                                                        &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
+   &trans &trans       &trans       &trans            &trans            &trans &trans &trans &trans &trans &kp prev_screen_OSX &trans
+   &trans &trans       &trans       &trans            &trans            &trans &trans &trans &trans &trans &trans              &trans
+   &trans &kp undo_OSX &kp redo_OSX &kp prev_page_OSX &kp next_page_OSX &trans &trans &trans &trans &trans &kp next_screen_OSX &trans
+                                                          &trans &trans &trans &trans &trans &trans
                         >;
                 };
 
