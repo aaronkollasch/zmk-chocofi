@@ -8,6 +8,7 @@ echo "copy to left board? y/n/q"
 read response
 case "$response" in
     y)
+        [[ -d $mountpath ]] || { echo "$mountpath does not exist"; exit 1; }
         cp build/left/zephyr/zmk.uf2 "$mountpath"
         ;;
     q)
@@ -20,6 +21,7 @@ echo "copy to right board? y/n/q"
 read response
 case "$response" in
     y)
+        [[ -d $mountpath ]] || { echo "$mountpath does not exist"; exit 1; }
         cp build/right/zephyr/zmk.uf2 "$mountpath"
         ;;
     q)
