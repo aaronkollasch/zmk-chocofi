@@ -253,7 +253,7 @@
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
 // | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  | BKSP | BACK | FWD  | DEL | SCR RGT |      |
-//                              | SYS  |    | PLAY   |  |      | NUM  | DEL  |
+//                                     | SYS  |     | PLAY   |  |      | NUM  | DEL  |
             bindings = <
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
@@ -294,15 +294,15 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2   |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |  // disabled
 // |  TAB |  7  |  5   |  3  |  1  |  9  |   |  8  |  0  |  2  |  4  |  6  | BKSP |
-// |  ESC | SHFT| CTRL | ALT | CMD | SPC |   |  -  | CMD | CTRL| ALT | SHFT|      |
-// | SHFT | FUN |      |     |  %  |  ^  |   |  +  |  *  |  /  |  .  | FUN |      |
+// |  ESC | SHFT| CTRL | ALT | CMD |  %  |   |  -  | CMD | CTRL| ALT | SHFT|      |
+// | SHFT | FUN |      |     | SPC |  ^  |   |  +  |  *  |  ,  |  .  |  /  |      |
 //                     |     |     |     |   |     |     |     |
             bindings = <
-// &kp TAB &kp N1    &kp N2    &kp N3   &kp N4   &kp N5    &kp N6    &kp N7   &kp N8   &kp N9    &kp N0    &kp BSPC
-   &kp TAB &kp N7    &kp N5    &kp N3   &kp N1   &kp N9    &kp N8    &kp N0   &kp N2   &kp N4    &kp N6    &kp BSPC
-   &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp SPACE &kp MINUS &sk RGUI &sk RALT &sk RCTRL &sk RSHFT &trans
-   &kp TAB &mo FUN   &trans    &trans   &trans   &trans    &kp PLUS  &kp STAR &kp FSLH &kp DOT   &mo FUN   &trans
-                               &trans   &trans   &trans    &trans    &trans   &trans
+// &kp TAB &kp N1    &kp N2    &kp N3   &kp N4    &kp N5    &kp N6    &kp N7   &kp N8    &kp N9    &kp N0    &kp BSPC
+   &kp TAB &kp N7    &kp N5    &kp N3   &kp N1    &kp N9    &kp N8    &kp N0   &kp N2    &kp N4    &kp N6    &kp BSPC
+   &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI  &kp PRCNT &kp MINUS &sk RGUI &sk RALT  &sk RCTRL &sk RSHFT &trans
+   &kp TAB &sl FUN   &trans    &trans   &kp SPACE &kp CARET &kp PLUS  &kp STAR &kp COMMA &kp DOT   &kp FSLH  &trans
+                               &trans   &trans    &trans    &trans    &trans   &trans
             >;
         };
 
