@@ -34,8 +34,6 @@
 #define new_tab_OSX     LG(T)
 #define prev_screen_OSX LC(LEFT)
 #define next_screen_OSX LC(RIGHT)
-#define prev_win_OSX    LG(TAB)
-#define next_win_OSX    LG(LS(TAB))
 #define prev_page_OSX   LG(LBKT)
 #define next_page_OSX   LG(RBKT)
 
@@ -47,8 +45,6 @@
 #define new_tab     LC(T)
 #define prev_screen LC(LG(LEFT))
 #define next_screen LC(LG(RIGHT))
-#define prev_win    LA(TAB)
-#define next_win    LA(LS(TAB))
 #define prev_page   LC(LBKT)
 #define next_page   LC(RBKT)
 
@@ -86,6 +82,39 @@
         //         , <&macro_release &kp ESC>
         //         ;
         // };
+        next_win: next_win {
+            label = "ZM_next_win";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp TAB>
+                , <&macro_pause_for_layer>
+                , <&macro_release &kp LALT>
+                ;
+        };
+        next_app: next_app {
+            label = "ZM_next_app";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp TAB>
+                , <&macro_pause_for_layer>
+                , <&macro_release &kp LGUI>
+                ;
+        };
+        next_app_win: next_app_win {
+            label = "ZM_next_app_win";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_tap &kp GRAVE>
+                , <&macro_pause_for_layer>
+                , <&macro_release &kp LGUI>
+                ;
+        };
     };
     behaviors {
         // espmod: esc_space_mod {
@@ -221,14 +250,14 @@
 
         nav_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB  | `    | TAB  | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
-// | ESC  | SHFT | CTRL | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
-// | SHFT | UNDO | REDO | COPY    | PASTE   | MUTE   |  | BKSP | BACK | FWD  | DEL | SCR RGT |      |
+// | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
+// | ESC  | SHFT     | CTRL     | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
+// | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  | BKSP | BACK | FWD  | DEL | SCR RGT |      |
 //                              | SYS  |    | PLAY   |  |      | NUM  | DEL  |
             bindings = <
-   &kp TAB   &kp GRAVE &kp TAB   &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
-   &kp ESC   &sk LSHFT &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
-   &kp LSHFT &kp undo  &kp redo  &kp copy      &kp paste     &kp C_MUTE   &kp BSPC &kp prev_page &kp next_page &kp DEL   &kp next_screen &none
+   &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
+   &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
+   &kp LSHFT &kp undo      &kp redo  &kp copy      &kp paste     &kp C_MUTE   &kp BSPC &kp prev_page &kp next_page &kp DEL   &kp next_screen &none
                                           &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
             >;
         };
