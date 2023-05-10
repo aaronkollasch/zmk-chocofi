@@ -158,6 +158,14 @@
         //     tapping-term-ms = <200>;
         //     bindings = <&mo>, <&key_repeat>;
         // };
+        htbr: hold_tap_balanced_repeat {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_BALANCED_REPEAT";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&key_repeat>;
+        };
 
         pc_connect: pc_connect{
             label = "ZM_PC_CONNECT";
@@ -230,7 +238,7 @@
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                   &key_repeat &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &kp BSPC
+                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &kp BSPC
             >;
         };
 
@@ -258,7 +266,7 @@
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
    &kp LSHFT &kp undo      &kp redo  &kp copy      &kp paste     &kp C_MUTE   &kp BSPC &kp prev_page &kp next_page &kp DEL   &kp next_screen &none
-                                          &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
+                                              &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
             >;
         };
 
