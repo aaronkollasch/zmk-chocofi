@@ -286,13 +286,13 @@
 
         sym_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  &  |  *  |  (  |  )  |  :  | BKSP |
-// |  ESC |  `  |  ~  |  =  |  _  |Resrv|   |  -  | CMD |  [  |  ]  |  '  |  \   |
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  &  | "|" |  (  |  )  |  :  | BKSP |
+// |  ESC |  `  |  ~  |  =  |  _  |Resrv|   |  -  |  \  |  [  |  ]  |  '  |  \   |
 // | SHFT |     | "|" |  \  |Resrv|  ^  |   |  +  |  *  |  {  |  }  |  "  | "|"  |
 //                    |     | NUM |     |   |     |     |     |
             bindings = <
-   &kp  TAB  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT &kp AMPS  &kp STAR &kp LPAR &kp RPAR &kp COLON &kp BSPC
-   &kp  ESC  &kp GRAVE &kp TILDE &kp EQUAL &kp UNDER &trans    &kp MINUS &sk RGUI &kp LBKT &kp RBKT &kp SQT   &kp BSLH
+   &kp  TAB  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT &kp AMPS  &kp PIPE &kp LPAR &kp RPAR &kp COLON &kp BSPC
+   &kp  ESC  &kp GRAVE &kp TILDE &kp EQUAL &kp UNDER &trans    &kp MINUS &kp BSLH &kp LBKT &kp RBKT &kp SQT   &kp BSLH
    &kp LSHFT &kp CARET &kp PIPE  &kp BSLH  &trans    &kp CARET &kp PLUS  &kp STAR &kp LBRC &kp RBRC &kp DQT   &kp PIPE
                                  &trans    &trans    &trans    &trans &trans &trans
             >;
