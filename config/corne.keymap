@@ -126,6 +126,14 @@
         };
     };
     behaviors {
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
         // espmod: esc_space_mod {
         //     compatible = "zmk,behavior-hold-tap";
         //     label = "ESC_SPACE_MOD";
@@ -253,7 +261,7 @@
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U     &kp Y   &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E     &kp I   &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &kp BSPC
+                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &bspc_del
             >;
         };
 
@@ -276,7 +284,7 @@
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
 // | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  | BKSP | BACK | FWD  | DEL | SCR RGT |      |
-//                                     | SYS  |     | PLAY   |  |      | NUM  | DEL  |
+//                                     | SYS  |     | PLAY   |  |      | NUM  |      |
             bindings = <
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
