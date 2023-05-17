@@ -197,15 +197,15 @@
         };
         combo_bsp {
             key-positions = <8 9>;
-            // not needed in first layer
+            // not needed in default or nav layers
             // conflicts with SYM layer "()"
-            layers = <3 4>;
+            layers = <NUM FUN>;
             bindings = <&kp BSPC>;
         };
         combo_ent {
             key-positions = <32 33>;
             // conflicts with SYM layer "{}"
-            layers = <0 1 3 4>;
+            layers = <DEF DEF_OSX NAV NAV_OSX NUM FUN>;
             bindings = <&kp RET>;
         };
     };
