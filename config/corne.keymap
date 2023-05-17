@@ -283,12 +283,12 @@
 // -----------------------------------------------------------------------------------------
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
-// | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  | BKSP | BACK | FWD  | DEL | SCR RGT |      |
+// | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  |      | BACK | FWD  |     | SCR RGT |      |
 //                                     | SYS  |     | PLAY   |  |      | NUM  |      |
             bindings = <
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
-   &kp LSHFT &kp undo      &kp redo  &kp copy      &kp paste     &kp C_MUTE   &kp BSPC &kp prev_page &kp next_page &kp DEL   &kp next_screen &none
+   &kp LSHFT &kp undo      &kp redo  &kp copy      &kp paste     &kp C_MUTE   &trans   &kp prev_page &kp next_page &trans    &kp next_screen &none
                                               &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
             >;
         };
