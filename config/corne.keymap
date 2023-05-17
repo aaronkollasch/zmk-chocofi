@@ -115,6 +115,15 @@
                 , <&macro_release &kp LGUI>
                 ;
         };
+        pluseq: pluseq {
+            label = "ZM_plus_equals";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp PLUS>
+                , <&macro_tap &kp EQUAL>
+                ;
+        };
     };
     behaviors {
         // espmod: esc_space_mod {
@@ -207,6 +216,12 @@
             // conflicts with SYM layer "{}"
             layers = <DEF DEF_OSX NAV NAV_OSX NUM FUN>;
             bindings = <&kp RET>;
+        };
+        combo_pluseq {
+            key-positions = <15 30>;
+            timeout-ms = <200>;
+            layers = <SYM>;
+            bindings = <&pluseq>;
         };
     };
     keymap {
