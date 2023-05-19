@@ -98,10 +98,10 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LGUI>
+                = <&macro_press &kp RGUI>
                 , <&macro_tap &kp TAB>
                 , <&macro_pause_for_layer>
-                , <&macro_release &kp LGUI>
+                , <&macro_release &kp RGUI>
                 ;
         };
         next_app_win: next_app_win {
@@ -109,10 +109,10 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LGUI>
+                = <&macro_press &kp RGUI>
                 , <&macro_tap &kp GRAVE>
                 , <&macro_pause_for_layer>
-                , <&macro_release &kp LGUI>
+                , <&macro_release &kp RGUI>
                 ;
         };
         pluseq: pluseq {
@@ -149,6 +149,38 @@
             bindings = <&kp DOT>, <&kp DQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
+        };
+        undo_w: undo_w {
+            compatible = "zmk,behavior-mod-morph";
+            label = "UNDO_W";
+            #binding-cells = <0>;
+            bindings = <&kp undo>, <&kp W>;
+            mods = <(MOD_RGUI)>;
+            keep-mods = <(MOD_RGUI)>;
+        };
+        redo_q: redo_q {
+            compatible = "zmk,behavior-mod-morph";
+            label = "REDO_Q";
+            #binding-cells = <0>;
+            bindings = <&kp redo>, <&kp Q>;
+            mods = <(MOD_RGUI)>;
+            keep-mods = <(MOD_RGUI)>;
+        };
+        undo_w_osx: undo_w_osx {
+            compatible = "zmk,behavior-mod-morph";
+            label = "UNDO_W_OSX";
+            #binding-cells = <0>;
+            bindings = <&kp undo_OSX>, <&kp W>;
+            mods = <(MOD_RGUI)>;
+            keep-mods = <(MOD_RGUI)>;
+        };
+        redo_q_osx: redo_q_osx {
+            compatible = "zmk,behavior-mod-morph";
+            label = "REDO_Q_OSX";
+            #binding-cells = <0>;
+            bindings = <&kp redo_OSX>, <&kp Q>;
+            mods = <(MOD_RGUI)>;
+            keep-mods = <(MOD_RGUI)>;
         };
         // espmod: esc_space_mod {
         //     compatible = "zmk,behavior-hold-tap";
@@ -304,7 +336,7 @@
             bindings = <
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
-   &kp LSHFT &kp undo      &kp redo  &kp copy      &kp paste     &kp C_MUTE   &trans   &kp prev_page &kp next_page &trans    &kp next_screen &none
+   &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &kp C_MUTE   &trans   &kp prev_page &kp next_page &trans    &kp next_screen &none
                                               &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
             >;
         };
@@ -316,10 +348,10 @@
 // |      | UNDO | REDO | COPY | PASTE |      |  |      | BACK | FWD  |      | SCR RGT |      |
 //                      |      |       |      |  |      |      |      |
             bindings = <
-   &trans &trans       &trans       &trans       &trans        &trans &trans &trans            &trans            &trans &kp prev_screen_OSX &trans
-   &trans &trans       &trans       &trans       &trans        &trans &trans &trans            &trans            &trans &trans              &trans
-   &trans &kp undo_OSX &kp redo_OSX &kp copy_OSX &kp paste_OSX &trans &trans &kp prev_page_OSX &kp next_page_OSX &trans &kp next_screen_OSX &trans
-                                                 &trans &trans &trans &trans &trans &trans
+   &trans &trans      &trans      &trans       &trans        &trans &trans &trans            &trans            &trans &kp prev_screen_OSX &trans
+   &trans &trans      &trans      &trans       &trans        &trans &trans &trans            &trans            &trans &trans              &trans
+   &trans &undo_w_osx &redo_q_osx &kp copy_OSX &kp paste_OSX &trans &trans &kp prev_page_OSX &kp next_page_OSX &trans &kp next_screen_OSX &trans
+                                               &trans &trans &trans &trans &trans &trans
             >;
         };
 
