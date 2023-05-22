@@ -126,14 +126,14 @@
         };
     };
     behaviors {
-        bspc_del: backspace_delete {
-            compatible = "zmk,behavior-mod-morph";
-            label = "BACKSPACE_DELETE";
-            #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-            keep-mods = <(MOD_RSFT)>;
-        };
+        // bspc_del: backspace_delete {
+        //     compatible = "zmk,behavior-mod-morph";
+        //     label = "BACKSPACE_DELETE";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp BACKSPACE>, <&kp DELETE>;
+        //     mods = <(MOD_LSFT|MOD_RSFT)>;
+        //     keep-mods = <(MOD_RSFT)>;
+        // };
         comma_sqt: comma_single_quote {
             compatible = "zmk,behavior-mod-morph";
             label = "COMMA_SINGLE_QUOTE";
@@ -305,12 +305,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
-//                     | RPT | NAV | SHFT |   | SPC/NAV | SPC/SYM | BKSP |
+//               | RPT/CTRL  | NAV | SHFT |   | SPC/NAV | SPC/SYM | BKSP |
             bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U      &kp Y    &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E      &kp I    &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &comma_sqt &dot_dqt &kp FSLH &kp ESC
-                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &bspc_del
+                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &kp BSPC
             >;
         };
 
@@ -334,12 +334,12 @@
 // -----------------------------------------------------------------------------------------
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
-// | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  |      | BACK | FWD  |     | SCR RGT |      |
+// | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  | BACK |      | DEL  | FWD | SCR RGT |      |
 //                                     | SYS  |     | PLAY   |  |      | NUM  |      |
             bindings = <
-   &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME &kp PG_DN     &kp PG_UP     &kp END   &kp prev_screen &kp BSPC
-   &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT &kp DOWN      &kp UP        &kp RIGHT &kp RET         &none
-   &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &kp C_MUTE   &trans   &kp prev_page &kp next_page &trans    &kp next_screen &none
+   &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME      &kp PG_DN &kp PG_UP &kp END   &kp prev_screen &kp BSPC
+   &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT      &kp DOWN  &kp UP    &kp RIGHT &kp RET         &none
+   &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &kp C_MUTE   &kp prev_page &trans    &kp DEL   &kp DEL   &kp next_screen &none
                                               &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
             >;
         };
@@ -349,12 +349,12 @@
 // -----------------------------------------------------------------------------------------
 // |      |      |      |      |       |      |  |      |      |      |      | SCR LFT |      |
 // |      |      |      |      |       |      |  |      |      |      |      |         |      |
-// |      | UNDO | REDO | COPY | PASTE |      |  |      | BACK | FWD  |      | SCR RGT |      |
+// |      | UNDO | REDO | COPY | PASTE |      |  | BACK |      |      | FWD  | SCR RGT |      |
 //                      |      |       |      |  |      |      |      |
             bindings = <
-   &trans &trans      &trans      &trans       &trans        &trans &trans &trans            &trans            &trans &kp prev_screen_OSX &trans
-   &trans &trans      &trans      &trans       &trans        &trans &trans &trans            &trans            &trans &trans              &trans
-   &trans &undo_w_osx &redo_q_osx &kp copy_OSX &kp paste_OSX &trans &trans &kp prev_page_OSX &kp next_page_OSX &trans &kp next_screen_OSX &trans
+   &trans &trans      &trans      &trans       &trans        &trans &trans            &trans &trans &trans            &kp prev_screen_OSX &trans
+   &trans &trans      &trans      &trans       &trans        &trans &trans            &trans &trans &trans            &trans              &trans
+   &trans &undo_w_osx &redo_q_osx &kp copy_OSX &kp paste_OSX &trans &kp prev_page_OSX &trans &trans &kp next_page_OSX &kp next_screen_OSX &trans
                                                &trans &trans &trans &trans &trans &trans
             >;
         };
