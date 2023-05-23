@@ -33,6 +33,7 @@
 #define undo_OSX        LG(Z)
 #define redo_OSX        LG(LS(Z))
 #define new_tab_OSX     LG(T)
+#define close_win_OSX   LG(W)
 #define prev_screen_OSX LC(LEFT)
 #define next_screen_OSX LC(RIGHT)
 #define prev_page_OSX   LG(LBKT)
@@ -44,6 +45,7 @@
 #define undo        LC(Z)
 #define redo        LC(LS(Z))
 #define new_tab     LC(T)
+#define close_win   LC(W)
 #define prev_screen LC(LG(LEFT))
 #define next_screen LC(LG(RIGHT))
 #define prev_page   LC(LBKT)
@@ -290,12 +292,12 @@
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
 // | SHFT |Z/SHFT|  X  |  C  |  D  |  V   |   |  K  |  H  |  ,  |  .  |  /  | ESC  |
-//               | RPT/CTRL  | NAV | SHFT |   | SPC/NAV | SPC/SYM | BKSP |
+//               | RPT/CTRL  | NAV | SHFT |   | SPC/NAV | SPC/SYM | BKSP/FUN |
             bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U      &kp Y    &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E      &kp I    &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &comma_sqt &dot_dqt &kp FSLH &kp ESC
-                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &kp BSPC
+                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &ltb FUN BSPC
             >;
         };
 
@@ -333,30 +335,30 @@
         nav_layer {
             label = "NAV";
 // -----------------------------------------------------------------------------------------
-// | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | VOL UP |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
-// | ESC  | SHFT     | CTRL     | ALT     | CMD     | VOL DN |  | LFT  | DWN  | UP   | RGT | ENT     |      |
-// | SHFT | UNDO     | REDO     | COPY    | PASTE   | MUTE   |  | BACK |      | DEL  | FWD | SCR RGT |      |
-//                                     | SYS  |     | PLAY   |  |      | NUM  |      |
+// | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | NEW TAB |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
+// | ESC  | SHFT     | CTRL     | ALT     | CMD     | CLOSE   |  | LFT  | DWN  | UP   | RGT | ENT     |      |
+// | SHFT | UNDO     | REDO     | COPY    | PASTE   |         |  | BACK |      | DEL  | FWD | SCR RGT |      |
+//                                     | SYS  |     |         |  |      | NUM  |      |
             bindings = <
-   &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp C_VOL_UP &kp HOME      &kp PG_DN &kp PG_UP &kp END   &kp prev_screen &kp BSPC
-   &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp C_VOL_DN &kp LEFT      &kp DOWN  &kp UP    &kp RIGHT &kp RET         &none
-   &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &kp C_MUTE   &kp prev_page &trans    &kp DEL   &kp DEL   &kp next_screen &none
-                                              &sl SYS &trans &kp C_PLAY_PAUSE &trans &trans &trans
+   &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp new_tab   &kp HOME      &kp PG_DN &kp PG_UP &kp END   &kp prev_screen &kp BSPC
+   &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp close_win &kp LEFT      &kp DOWN  &kp UP    &kp RIGHT &kp RET         &none
+   &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &trans        &kp prev_page &trans    &kp DEL   &kp DEL   &kp next_screen &none
+                                                         &sl SYS &trans &trans &trans &trans &trans
             >;
         };
 
         nav_osx_layer {
             label = "NAV";
 // -----------------------------------------------------------------------------------------
-// |      |      |      |      |       |      |  |      |      |      |      | SCR LFT |      |
-// |      |      |      |      |       |      |  |      |      |      |      |         |      |
-// |      | UNDO | REDO | COPY | PASTE |      |  | BACK |      |      | FWD  | SCR RGT |      |
-//                      |      |       |      |  |      |      |      |
+// |      |      |      |      |       | NEW TAB |  |      |      |      |      | SCR LFT |      |
+// |      |      |      |      |       | CLOSE   |  |      |      |      |      |         |      |
+// |      | UNDO | REDO | COPY | PASTE |         |  | BACK |      |      | FWD  | SCR RGT |      |
+//                      |      |       |         |  |      |      |      |
             bindings = <
-   &trans &trans      &trans      &trans       &trans        &trans &trans            &trans &trans &trans            &kp prev_screen_OSX &trans
-   &trans &trans      &trans      &trans       &trans        &trans &trans            &trans &trans &trans            &trans              &trans
-   &trans &undo_w_osx &redo_q_osx &kp copy_OSX &kp paste_OSX &trans &kp prev_page_OSX &trans &trans &kp next_page_OSX &kp next_screen_OSX &trans
-                                               &trans &trans &trans &trans &trans &trans
+   &trans &trans      &trans      &trans       &trans        &kp new_tab_OSX    &trans            &trans &trans &trans            &kp prev_screen_OSX &trans
+   &trans &trans      &trans      &trans       &trans        &kp close_win_OSX  &trans            &trans &trans &trans            &trans              &trans
+   &trans &undo_w_osx &redo_q_osx &kp copy_OSX &kp paste_OSX &trans             &kp prev_page_OSX &trans &trans &kp next_page_OSX &kp next_screen_OSX &trans
+                                               &trans &trans &trans             &trans &trans &trans
             >;
         };
 
@@ -395,15 +397,15 @@
         fun_layer {
             label = "FN";
 // -----------------------------------------------------------------------------------------
-// |  TAB | F7  | F5  | F3  | F1  | F9  |   | F8  | F10 | F2  | F4  | F6  | BKSP |
-// |  ESC | SHFT| CTRL| ALT | CMD | F11 |   | F10 | CMD | ALT | CTRL| SHFT|      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    |     |     |     |   |     |     |     |
+// |  TAB | F7  | F5  | F3  | F1  | F9  |   | F8   | F10    | F2     | F4   | F6   | BKSP |
+// |  ESC | SHFT| CTRL| ALT | CMD | F11 |   | F12  | CMD    | ALT    | CTRL | SHFT |      |
+// | SHFT |     |     |     |     |     |   | PREV | VOL DN | VOL UP | NEXT | MUTE |      |
+//                    |     |     |     |   | PLAY |     |     |
             bindings = <
-   &kp TAB &kp F7    &kp F5   &kp F3    &kp F1   &kp F9  &kp F8  &kp F10  &kp F2    &kp F4   &kp F6    &kp BSPC
-   &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp F11 &kp F12 &sk RGUI &sk RALT &sk RCTRL &sk RSHFT &trans
-   &kp TAB &trans    &trans   &trans    &trans   &trans  &trans  &trans   &trans    &trans   &trans    &trans
-                              &trans    &trans   &trans  &trans  &trans   &trans
+   &kp TAB &kp F7    &kp F5    &kp F3   &kp F1   &kp F9  &kp F8     &kp F10      &kp F2       &kp F4     &kp F6     &kp BSPC
+   &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp F11 &kp F12    &sk RGUI     &sk RALT     &sk RCTRL  &sk RSHFT  &trans
+   &kp TAB &trans    &trans    &trans   &trans   &trans  &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &kp C_MUTE &trans
+                               &trans   &trans   &trans  &kp C_PLAY_PAUSE &trans   &trans
             >;
         };
 
