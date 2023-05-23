@@ -12,12 +12,13 @@
 // layers ID definition
 #define DEF     0
 #define DEF_OSX 1
-#define NAV     2
-#define NAV_OSX 3
-#define SYM     4
-#define NUM     5
-#define FUN     6
-#define SYS     7
+#define DEF_QWE 2
+#define NAV     3
+#define NAV_OSX 4
+#define SYM     5
+#define NUM     6
+#define FUN     7
+#define SYS     8
 
 // macros definition
 #define meh      LC(LS(LALT))
@@ -270,7 +271,7 @@
         combo_ent {
             key-positions = <32 33>;
             // conflicts with SYM layer "{}"
-            layers = <DEF DEF_OSX NAV NAV_OSX NUM FUN>;
+            layers = <DEF DEF_OSX DEF_QWE NAV NAV_OSX NUM FUN>;
             bindings = <&kp RET>;
         };
         combo_pluseq {
@@ -282,22 +283,6 @@
     };
     keymap {
         compatible = "zmk,keymap";
-
-// Qwerty
-//                 default_layer {
-// // -----------------------------------------------------------------------------------------
-// // |  TAB |  Q   |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P   | BKSP |
-// // |  ESC |  A   |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;   |  '   |
-// // | SHFT |Z/SHFT|  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |//SHFT| ESC  |
-// //            | TAB/ALT | GUI | ESC/CTRL |   | ENT | SPC/LWR | RSE |
-//                         bindings = <
-//    &kp TAB   &kp Q       &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P          &kp BSPC
-//    &kp ESC   &kp A       &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI       &kp SQT
-//    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &mt RSHFT FSLH &kp ESC
-//              &mt LALT TAB &kp LGUI &mt LCTRL ESC   &kp RET &lt 1 SPACE &mo 2
-//                         >;
-//                 };
-
 // Colemak-DH
         default_layer {
             label = "DEF";
@@ -326,6 +311,22 @@
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
    &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
                         &trans &trans &trans &trans &trans &trans
+            >;
+        };
+
+// Qwerty
+        default_qwerty_layer {
+            label = "QWE";
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q   |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P   | BKSP |
+// |  ESC |  A   |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;   |  '   |
+// | SHFT |Z/SHFT|  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /   | ESC  |
+//                     |     |     |     |   |     |     |     |
+            bindings = <
+   &kp TAB   &kp Q       &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp ESC   &kp A       &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &mt LSHFT Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                            &trans &trans &trans   &trans &trans &trans
             >;
         };
 
@@ -397,7 +398,7 @@
 // |  TAB | F7  | F5  | F3  | F1  | F9  |   | F8  | F10 | F2  | F4  | F6  | BKSP |
 // |  ESC | SHFT| CTRL| ALT | CMD | F11 |   | F10 | CMD | ALT | CTRL| SHFT|      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    |     |     |     |   |     |     | SYS |
+//                    |     |     |     |   |     |     |     |
             bindings = <
    &kp TAB &kp F7    &kp F5   &kp F3    &kp F1   &kp F9  &kp F8  &kp F10  &kp F2    &kp F4   &kp F6    &kp BSPC
    &kp ESC &sk LSHFT &sk LCTRL &sk LALT &sk LGUI &kp F11 &kp F12 &sk RGUI &sk RALT &sk RCTRL &sk RSHFT &trans
@@ -409,12 +410,12 @@
         sys_layer {
             label = "SYS";
 // -----------------------------------------------------------------------------------------
-// |  TAB |BTCLR|     | DEF        | DEF_OSX     |        |   |       |      |      |     |     | BKSP |
+// |  TAB |BTCLR|     | DEF        | DEF_OSX     | QWERTY |   |       |      |      |     |     | BKSP |
 // |  ESC | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |      |
 // | SHFT | BT4 |     |            | ExtPwrOff   |ExtPwrOn|   |       |      |      |     |     |      |
 //                    |            |             |        |   |       |      |      |
             bindings = <
-   &kp TAB   &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &trans           &trans     &trans &trans &trans &trans &kp BSPC
+   &kp TAB   &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &tog DEF_QWE     &trans     &trans &trans &trans &trans &kp BSPC
    &kp ESC   &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect      &sys_reset       &sys_reset &trans &trans &trans &trans &trans
    &kp LSHFT &bt BT_SEL 4 &trans       &trans      &ext_power EP_OFF &ext_power EP_ON &trans     &trans &trans &trans &trans &trans
                                                                  &trans &trans &trans &trans &trans &trans
