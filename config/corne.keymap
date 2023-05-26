@@ -451,17 +451,15 @@
         num_layer {
             label = "NUM";
 // -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2   |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |  // disabled
-// |  TAB |  7  |  5   |  3  |  1  |  9  |   |  8  |  0  |  2  |  4  |  6  | BKSP |
-// |  ESC | SHFT| CTRL | ALT | CMD |  %  |   |  -  | CMD | CTRL| ALT | SHFT|      |
-// | SHFT | FUN |      |  =  | SPC |  ^  |   |  +  |  *  |  ,  |  .  |  /  |      |
+// |  TAB | SHFT| CTRL | ALT | CMD |  %  |   |  -  | CMD | CTRL| ALT | SHFT| BKSP |
+// |  ESC |  7  |  5   |  3  |  1  |  9  |   |  8  |  0  |  2  |  4  |  6  |      |
+// | SHFT |  <  |  >   |  =  | SPC |  ^  |   |  +  |  *  |  ,  |  .  |  /  |      |
 //                     |     |     |     |   |     |     |     |
             bindings = <
-// &kp TAB &kp N1    &kp N2    &kp N3    &kp N4    &kp N5    &kp N6    &kp N7   &kp N8    &kp N9    &kp N0    &kp BSPC
-   &kp TAB &kp N7    &kp N5    &kp N3    &kp N1    &kp N9    &kp N8    &kp N0   &kp N2    &kp N4    &kp N6    &kp BSPC
-   &kp ESC &sk LSHFT &sk LCTRL &sk LALT  &sk LGUI  &kp PRCNT &kp MINUS &sk RGUI &sk RALT  &sk RCTRL &sk RSHFT &trans
-   &kp TAB &sl FUN   &trans    &kp EQUAL &kp SPACE &kp CARET &kp PLUS  &kp STAR &kp COMMA &kp DOT   &kp FSLH  &trans
-                               &trans    &trans    &trans    &trans    &trans   &trans
+   &kp TAB   &sk LSHFT &sk LCTRL &sk LALT  &sk LGUI  &kp PRCNT &kp MINUS &sk RGUI &sk RALT  &sk RCTRL &sk RSHFT &kp BSPC
+   &kp ESC   &kp N7    &kp N5    &kp N3    &kp N1    &kp N9    &kp N8    &kp N0   &kp N2    &kp N4    &kp N6    &trans
+   &kp LSHFT &kp LT    &kp GT    &kp EQUAL &kp SPACE &kp CARET &kp PLUS  &kp STAR &kp COMMA &kp DOT   &kp FSLH  &trans
+                                 &trans    &trans    &trans    &trans    &trans   &trans
             >;
         };
 
@@ -473,9 +471,9 @@
 // | SHFT |     | BRI DN | BRI UP |     |     |   | PREV | VOL DN | VOL UP | NEXT | MUTE |      |
 //                       |        |     |     |   | PLAY |        |        |
             bindings = <
-   &kp TAB &kp F7    &kp F5       &kp F3       &kp F1   &kp F9  &kp F8     &kp F10      &kp F2       &kp F4     &kp F6     &kp BSPC
-   &kp ESC &sk LSHFT &sk LCTRL    &sk LALT     &sk LGUI &kp F11 &kp F12    &sk RGUI     &sk RALT     &sk RCTRL  &sk RSHFT  &trans
-   &kp TAB &trans    &kp C_BRI_DN &kp C_BRI_UP &trans   &trans  &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &kp C_MUTE &trans
+   &kp TAB   &kp F7    &kp F5       &kp F3       &kp F1   &kp F9  &kp F8     &kp F10      &kp F2       &kp F4     &kp F6     &kp BSPC
+   &kp ESC   &sk LSHFT &sk LCTRL    &sk LALT     &sk LGUI &kp F11 &kp F12    &sk RGUI     &sk RALT     &sk RCTRL  &sk RSHFT  &trans
+   &kp LSHFT &trans    &kp C_BRI_DN &kp C_BRI_UP &trans   &trans  &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &kp C_MUTE &trans
                                   &trans       &trans   &trans  &kp C_PLAY_PAUSE &trans &trans
             >;
         };
