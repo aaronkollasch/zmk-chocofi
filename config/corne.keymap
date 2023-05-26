@@ -54,12 +54,21 @@
 
 // Vim-specific definition
 #define TOG_VIM_KEY(key,...) \
-    ZMK_MACRO(toggle_vim_##key, \
+    ZMK_MACRO(tog_vim_##key, \
         wait-ms = <0>; \
         tap-ms = <40>; \
         bindings = <&tog VIM &kp key>; \
         __VA_ARGS__ \
     )
+#define TOG_VIM_KEY_NOCTRL(key) \
+    tog_vim_noc_##key: tog_vim_noc_##key { \
+            label = ZMK_MACRO_STRINGIFY(ZM_TOG_VIM_NOC_ ## key); \
+            compatible = "zmk,behavior-mod-morph"; \
+            #binding-cells = <0>; \
+            bindings = <&tog_vim_##key>, <&kp key>; \
+            mods = <(MOD_LCTL|MOD_RCTL)>; \
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>; \
+        };
 
 &sk {
     release-after-ms = <1000>;
@@ -244,14 +253,6 @@
             quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
-        lttogsp: layer_tap_toggle_space {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TOGGLE_SPACE";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <150>;
-            bindings = <&mo>, <&toggle_vim_SPACE>;
-        };
         // ltbr: layer_tap_balanced_repeat {
         //     compatible = "zmk,behavior-hold-tap";
         //     label = "LAYER_TAP_BALANCED_REPEAT";
@@ -285,6 +286,20 @@
             tap-ms = <5>;
             bindings = <&bt BT_SEL 0 &to DEF_OSX>;
         };
+
+        // vim-specific bindings
+        lttogsp: layer_tap_toggle_space {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_TOGGLE_SPACE";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <150>;
+            bindings = <&mo>, <&tog_vim_noc_SPACE>;
+        };
+        TOG_VIM_KEY_NOCTRL(SPACE)
+        TOG_VIM_KEY_NOCTRL(A)
+        TOG_VIM_KEY_NOCTRL(C)
+        TOG_VIM_KEY_NOCTRL(S)
     };
 
     combos {
@@ -381,10 +396,10 @@
 // |      |   U    | C-R | C+EXIT |  D    |  V  |   |     |     |  [  |  ]  |        |      |
 //                       |        |       |     |   |     | SPC+EXIT/SYM | EXIT |
             bindings = <
-   &trans &trans        &kp W     &trans        &trans      &kp B   &kp LC(I) &kp LC(D) &kp LC(U) &kp LC(O) &trans            &trans
-   &trans &toggle_vim_A &trans    &toggle_vim_S &hunk_stage &kp G   &kp H     &kp J     &kp K     &kp L     &toggle_vim_COLON &trans
-   &trans &kp U         &kp LC(R) &toggle_vim_C &kp D       &kp V   &trans    &trans    &kp LBKT  &kp RBKT  &trans            &trans
-                                              &trans &trans &trans  &trans &lttogsp SYM VIM &tog VIM
+   &trans &trans         &kp W     &trans         &trans      &kp B   &kp LC(I) &kp LC(D) &kp LC(U) &kp LC(O) &trans         &trans
+   &trans &tog_vim_noc_A &trans    &tog_vim_noc_S &hunk_stage &kp G   &kp H     &kp J     &kp K     &kp L     &tog_vim_COLON &trans
+   &trans &kp U          &kp LC(R) &tog_vim_noc_C &kp D       &kp V   &trans    &trans    &kp LBKT  &kp RBKT  &trans         &trans
+                                                &trans &trans &trans  &trans &lttogsp SYM VIM &tog VIM
             >;
         };
 
