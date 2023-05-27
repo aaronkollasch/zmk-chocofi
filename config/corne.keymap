@@ -151,6 +151,7 @@
         // vim macros
         TOG_VIM_KEY(SPACE)
         TOG_VIM_KEY(COLON)
+        TOG_VIM_KEY(FSLH)
         TOG_VIM_KEY(A)
         TOG_VIM_KEY(S)
         TOG_VIM_KEY(C)
@@ -158,6 +159,11 @@
             wait-ms = <30>;
             tap-ms = <40>;
             bindings = <&kp SPACE &kp H &kp S>;
+        )
+        ZMK_MACRO(hunk_preview,
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp SPACE &kp H &kp P>;
         )
     };
 
@@ -297,6 +303,7 @@
             bindings = <&mo>, <&tog_vim_noc_SPACE>;
         };
         TOG_VIM_KEY_NOCTRL(SPACE)
+        TOG_VIM_KEY_NOCTRL(FSLH)
         TOG_VIM_KEY_NOCTRL(A)
         TOG_VIM_KEY_NOCTRL(C)
         TOG_VIM_KEY_NOCTRL(S)
@@ -391,15 +398,15 @@
         vim_layer {
             label = "VIM";
 // -----------------------------------------------------------------------------------------
-// |      |        |  W  |        |       |  B  |   | C-I | C-D | C-U | C-O |        |      |
-// |      | A+EXIT |     | S+EXIT | Stage |  G  |   |  H  |  J  |  K  |  L  | :+EXIT |      |
-// |      |   U    | C-R | C+EXIT |  D    |  V  |   |     |     |  [  |  ]  |        |      |
-//                       |        |       |     |   |     | SPC+EXIT/SYM | EXIT |
+// |      |        |  W  |        | Preview |  B  |   | C-I | C-D | C-U | C-O |        |      |
+// |      | A+EXIT |     | S+EXIT | Stage   |  G  |   |  H  |  J  |  K  |  L  | :+EXIT |      |
+// |      |   U    | C-R | C+EXIT |  D      |  V  |   |     |  ]  |  [  |     | /+EXIT |      |
+//                       |        |         |     |   |     | SPC+EXIT/SYM | EXIT |
             bindings = <
-   &trans &trans         &kp W     &trans         &trans      &kp B   &kp LC(I) &kp LC(D) &kp LC(U) &kp LC(O) &trans         &trans
-   &trans &tog_vim_noc_A &trans    &tog_vim_noc_S &hunk_stage &kp G   &kp H     &kp J     &kp K     &kp L     &tog_vim_COLON &trans
-   &trans &kp U          &kp LC(R) &tog_vim_noc_C &kp D       &kp V   &trans    &trans    &kp LBKT  &kp RBKT  &trans         &trans
-                                                &trans &trans &trans  &trans &lttogsp SYM VIM &tog VIM
+   &trans &trans         &kp W     &trans         &hunk_preview &kp B   &kp LC(I) &kp LC(D) &kp LC(U) &kp LC(O) &trans            &trans
+   &trans &tog_vim_noc_A &trans    &tog_vim_noc_S &hunk_stage   &kp G   &kp H     &kp J     &kp K     &kp L     &tog_vim_COLON    &trans
+   &trans &kp U          &kp LC(R) &tog_vim_noc_C &kp D         &kp V   &trans    &kp RBKT  &kp LBKT  &trans    &tog_vim_noc_FSLH &trans
+                                                  &trans &trans &trans  &trans &lttogsp SYM VIM &tog VIM
             >;
         };
 
