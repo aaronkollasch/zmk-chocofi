@@ -422,12 +422,12 @@
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | NEW TAB |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | CLOSE   |  | LFT  | DWN  | UP   | RGT | ENT     |      |
 // | SHFT | UNDO     | REDO     | COPY    | PASTE   | VIM     |  | BACK | DEL  |      | FWD | SCR RGT |      |
-//                                     | SYS  |     |         |  |      | NUM  |      |
+//                                     | SYS  | MOU |         |  | MOU  | NUM  |      |
             bindings = <
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp new_tab   &kp HOME      &kp PG_DN &kp PG_UP &kp END    &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp close_win &kp LEFT      &kp DOWN  &kp UP    &kp RIGHT  &kp RET         &none
    &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &tog VIM      &kp prev_page &kp DEL   &trans    &next_page &kp next_screen &none
-                                                         &sl SYS &trans &trans &trans &trans &trans
+                                                        &sl SYS &mo MOU &trans &mo MOU &trans &trans
             >;
         };
 
