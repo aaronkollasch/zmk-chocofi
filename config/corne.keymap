@@ -15,12 +15,13 @@
 #define DEF_QWE 2
 #define VIM     3
 #define NAV     4
-#define NAV_OSX 5
-#define SYM     6
-#define NUM     7
-#define FUN     8
-#define MOU     9
-#define SYS    10
+#define NAV_RGT 5
+#define NAV_OSX 6
+#define SYM     7
+#define NUM     8
+#define FUN     9
+#define MOU    10
+#define SYS    11
 
 // macros definition
 #define meh      LC(LS(LALT))
@@ -89,9 +90,17 @@
             if-layers = <NAV SYM>;
             then-layer = <NUM>;
         };
+        num_right_layer {
+            if-layers = <NAV_RGT SYM>;
+            then-layer = <NUM>;
+        };
         num_osx_layer {
             if-layers = <NAV_OSX SYM>;
             then-layer = <NUM>;
+        };
+        mouse_layer {
+            if-layers = <NAV NAV_RGT>;
+            then-layer = <MOU>;
         };
     };
 
@@ -336,7 +345,7 @@
         combo_ent {
             key-positions = <32 33>;
             // conflicts with SYM layer "{}"
-            layers = <DEF DEF_OSX DEF_QWE VIM NAV NAV_OSX NUM FUN>;
+            layers = <DEF DEF_OSX DEF_QWE VIM NAV NAV_RGT NAV_OSX NUM FUN>;
             bindings = <&kp RET>;
         };
         combo_pluseq {
@@ -344,11 +353,6 @@
             timeout-ms = <200>;
             layers = <SYM>;
             bindings = <&pluseq>;
-        };
-        combo_mouse {
-            key-positions = <37 39>;
-            timeout-ms = <200>;
-            bindings = <&mo MOU>;
         };
     };
 
@@ -366,7 +370,7 @@
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U      &kp Y    &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E      &kp I    &kp O    &kp SQT
    &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &comma_dqt &dot_sqt &kp FSLH &kp ESC
-                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV SPACE &ltb SYM SPACE &ltb FUN BSPC
+                 &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV_RGT SPACE &ltb SYM SPACE &ltb FUN BSPC
             >;
         };
 
@@ -422,12 +426,27 @@
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | NEW TAB |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | CLOSE   |  | LFT  | DWN  | UP   | RGT | ENT     |      |
 // | SHFT | UNDO     | REDO     | COPY    | PASTE   | VIM     |  | BACK | DEL  |      | FWD | SCR RGT |      |
-//                                     | SYS  | MOU |         |  | MOU  | NUM  |      |
+//                                     | SYS  |     |         |  |      | NUM  |      |
             bindings = <
    &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp new_tab   &kp HOME      &kp PG_DN &kp PG_UP &kp END       &kp prev_screen &kp BSPC
    &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp close_win &kp LEFT      &kp DOWN  &kp UP    &kp RIGHT     &kp RET         &none
    &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &tog VIM      &kp prev_page &kp DEL   &trans    &kp next_page &kp next_screen &none
-                                                        &sl SYS &mo MOU &trans &mo MOU &trans &trans
+                                                         &sl SYS &trans &trans &trans &trans &trans
+            >;
+        };
+
+        nav_right_layer {
+            label = "NAV";
+// -----------------------------------------------------------------------------------------
+// | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | NEW TAB |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
+// | ESC  | SHFT     | CTRL     | ALT     | CMD     | CLOSE   |  | LFT  | DWN  | UP   | RGT | ENT     |      |
+// | SHFT | UNDO     | REDO     | COPY    | PASTE   | VIM     |  | BACK | DEL  |      | FWD | SCR RGT |      |
+//                                     | SYS  |     |         |  |      | NUM  |      |
+            bindings = <
+   &kp TAB   &next_app_win &next_app &kp prev_tab  &kp next_tab  &kp new_tab   &kp HOME      &kp PG_DN &kp PG_UP &kp END       &kp prev_screen &kp BSPC
+   &kp ESC   &sk LSHFT     &sk LCTRL &sk LALT      &sk LGUI      &kp close_win &kp LEFT      &kp DOWN  &kp UP    &kp RIGHT     &kp RET         &none
+   &kp LSHFT &undo_w       &redo_q   &kp copy      &kp paste     &tog VIM      &kp prev_page &kp DEL   &trans    &kp next_page &kp next_screen &none
+                                                         &sl SYS &trans &trans &trans &trans &trans
             >;
         };
 
