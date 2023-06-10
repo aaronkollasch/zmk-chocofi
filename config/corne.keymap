@@ -528,15 +528,15 @@
         sys_layer {
             label = "SYS";
 // -----------------------------------------------------------------------------------------
-// |  TAB |BTCLR|     | DEF        | DEF_OSX     | QWERTY |   |       |      |      |     |     | BKSP |
-// |  ESC | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |      |
-// | SHFT | BT4 |     |            | ExtPwrOff   |ExtPwrOn|   |       |      |      |     |     |      |
-//                    |            |             |        |   |       |      |      |
+// |     |BTCLR|     | DEF        | DEF_OSX     | QWERTY |   |       |      |      |     |     |     |
+// |     | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |     |
+// |     | BT4 |     |            | ExtPwrOff   |ExtPwrOn|   |       |      |      |     |     |     |
+//                   |            |             |        |   |       |      |      |
             bindings = <
-   &kp TAB   &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &tog DEF_QWE     &trans     &trans &trans &trans &trans &kp BSPC
-   &kp ESC   &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect      &sys_reset       &sys_reset &trans &trans &trans &trans &trans
-   &kp LSHFT &bt BT_SEL 4 &trans       &trans      &ext_power EP_OFF &ext_power EP_ON &trans     &trans &trans &trans &trans &trans
-                                                                 &trans &trans &trans &trans &trans &trans
+   &trans &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &tog DEF_QWE     &trans     &trans &trans &trans &trans &trans
+   &trans &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect      &sys_reset       &sys_reset &trans &trans &trans &trans &trans
+   &trans &bt BT_SEL 4 &trans       &trans      &ext_power EP_OFF &ext_power EP_ON &trans     &trans &trans &trans &trans &trans
+                                                              &trans &trans &trans &trans &trans &trans
             >;
         };
     };
