@@ -186,38 +186,38 @@
         //     mods = <(MOD_LSFT|MOD_RSFT)>;
         //     keep-mods = <(MOD_RSFT)>;
         // };
-        // comma_dqt: comma_double_quote {
-        //     compatible = "zmk,behavior-mod-morph";
-        //     label = "COMMA_DOUBLE_QUOTE";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp COMMA>, <&kp DQT>;
-        //     mods = <(MOD_LSFT|MOD_RSFT)>;
-        //     keep-mods = <(MOD_RSFT)>;
-        // };
-        // dot_sqt: dot_single_quote {
-        //     compatible = "zmk,behavior-mod-morph";
-        //     label = "DOT_SINGLE_QUOTE";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp DOT>, <&kp SQT>;
-        //     mods = <(MOD_LSFT|MOD_RSFT)>;
-        //     keep-mods = <(MOD_RSFT)>;
-        // };
-        comma_sqt: comma_single_quote {
+        comma_dqt: comma_double_quote {
             compatible = "zmk,behavior-mod-morph";
-            label = "COMMA_SINGLE_QUOTE";
+            label = "COMMA_DOUBLE_QUOTE";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SQT>;
+            bindings = <&kp COMMA>, <&kp DQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
         };
-        dot_dqt: dot_double_quote {
+        dot_sqt: dot_single_quote {
             compatible = "zmk,behavior-mod-morph";
-            label = "DOT_DOUBLE_QUOTE";
+            label = "DOT_SINGLE_QUOTE";
             #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp DQT>;
+            bindings = <&kp DOT>, <&kp SQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
         };
+        // comma_sqt: comma_single_quote {
+        //     compatible = "zmk,behavior-mod-morph";
+        //     label = "COMMA_SINGLE_QUOTE";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp COMMA>, <&kp SQT>;
+        //     mods = <(MOD_LSFT|MOD_RSFT)>;
+        //     keep-mods = <(MOD_RSFT)>;
+        // };
+        // dot_dqt: dot_double_quote {
+        //     compatible = "zmk,behavior-mod-morph";
+        //     label = "DOT_DOUBLE_QUOTE";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp DOT>, <&kp DQT>;
+        //     mods = <(MOD_LSFT|MOD_RSFT)>;
+        //     keep-mods = <(MOD_RSFT)>;
+        // };
         undo_w: undo_w {
             compatible = "zmk,behavior-mod-morph";
             label = "UNDO_W";
@@ -385,7 +385,7 @@
             bindings = <
    &kp TAB   &kp Q       &kp W &kp F &kp P &kp B   &kp J &kp L  &kp U      &kp Y    &kp SEMI &kp BSPC
    &kp ESC   &kp A       &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E      &kp I    &kp O    &kp SQT
-   &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &comma_sqt &dot_dqt &kp FSLH &kp ESC
+   &kp LSHFT &mt LSHFT Z &kp X &kp C &kp D &kp V   &kp K &kp H  &comma_dqt &dot_sqt &kp FSLH &kp ESC
                  &htbr LCTRL 0 &mo NAV &sk LSHFT   &ltb NAV_RGT SPACE &ltb SYM SPACE &ltb FUN BSPC
             >;
         };
