@@ -546,13 +546,13 @@
 // -----------------------------------------------------------------------------------------
 // |     |BTCLR|     | DEF        | DEF_OSX     | QWERTY |   |       |      |      |     |     |     |
 // |     | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |     |
-// |     | BT4 |     |            | ExtPwrOff   |ExtPwrOn|   |       |      |      |     |     |     |
+// |     | BT4 |     |            |             |        |   |       |      |      |     |     |     |
 //                   |            |             |        |   |       |      |      |
             bindings = <
-   &trans &bt BT_CLR   &trans       &to DEF     &to DEF_OSX       &tog DEF_QWE     &trans     &trans &trans &trans &trans &trans
-   &trans &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect      &sys_reset       &sys_reset &trans &trans &trans &trans &trans
-   &trans &bt BT_SEL 4 &trans       &trans      &ext_power EP_OFF &ext_power EP_ON &trans     &trans &trans &trans &trans &trans
-                                                              &trans &trans &trans &trans &trans &trans
+   &trans &bt BT_CLR   &trans       &to DEF     &to DEF_OSX   &tog DEF_QWE &trans     &trans &trans &trans &trans &trans
+   &trans &bt BT_SEL 3 &bt BT_SEL 2 &pc_connect &osx_connect  &sys_reset   &sys_reset &trans &trans &trans &trans &trans
+   &trans &bt BT_SEL 4 &trans       &trans      &trans &trans &trans       &trans &trans &trans &trans &trans
+                                                &trans &trans &trans       &trans &trans &trans
             >;
         };
     };
