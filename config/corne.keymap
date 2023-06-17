@@ -265,7 +265,7 @@
             label = "STICKY_KEY_HOLD_TAP";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <150>;
             bindings = <&kp>, <&sk>;
         };
         lthp: layer_tap_hold_preferred {
