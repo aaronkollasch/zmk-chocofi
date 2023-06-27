@@ -486,12 +486,12 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  `  |  @  |  #  |  $  |  %  |   |  &  | "|" |  (  |  )  |  :  | BKSP |
 // |  ESC |  ~  |  !  |  =  |  _  |Resrv|   |  -  |  \  |  [  |  ]  |  '  |  \   |
-// | SHFT |  <  |  >  |  =  |Resrv|  ^  |   |  +  |  *  |  {  |  }  |  "  | "|"  |
+// | SHFT |  =  |  <  |  >  |Resrv|  ^  |   |  +  |  *  |  {  |  }  |  "  | "|"  |
 //                    |     | NUM |     |   |     |     |     |
             bindings = <
    &kp  TAB  &kp GRAVE &kp AT   &kp HASH  &kp DLLR  &kp PRCNT &kp AMPS  &kp PIPE &kp LPAR &kp RPAR &kp COLON &kp BSPC
    &kp  ESC  &kp TILDE &kp EXCL &kp EQUAL &kp UNDER &trans    &kp MINUS &kp BSLH &kp LBKT &kp RBKT &kp SQT   &kp BSLH
-   &kp LSHFT &kp LT    &kp GT   &kp EQUAL &trans    &kp CARET &kp PLUS  &kp STAR &kp LBRC &kp RBRC &kp DQT   &kp PIPE
+   &kp LSHFT &kp EQUAL &kp LT   &kp GT    &trans    &kp CARET &kp PLUS  &kp STAR &kp LBRC &kp RBRC &kp DQT   &kp PIPE
                                 &trans    &trans    &trans    &trans &trans &trans
             >;
         };
@@ -501,12 +501,12 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB | SHFT| CTRL | ALT | CMD |  %  |   |  -  | CMD | CTRL| ALT | SHFT| BKSP |
 // |  ESC |  6  |  4   |  2  |  0  |  8  |   |  9  |  1  |  3  |  5  |  7  |      |
-// | SHFT |  <  |  >   |  =  | SPC |  ^  |   |  +  |  *  |  ,  |  .  |  /  |      |
+// | SHFT |  =  |  <   |  >  | SPC |  ^  |   |  +  |  *  |  ,  |  .  |  /  |      |
 //                     |     |     |     |   |     |     |     |
             bindings = <
    &kp TAB   &sk LSHFT &sk LCTRL &sk LALT  &sk LGUI  &kp PRCNT &kp MINUS &sk RGUI &sk RALT  &sk RCTRL &sk RSHFT &kp BSPC
    &kp ESC   &kp N6    &kp N4    &kp N2    &kp N0    &kp N8    &kp N9    &kp N1   &kp N3    &kp N5    &kp N7    &trans
-   &kp LSHFT &kp LT    &kp GT    &kp EQUAL &kp SPACE &kp CARET &kp PLUS  &kp STAR &kp COMMA &kp DOT   &kp FSLH  &trans
+   &kp LSHFT &kp EQUAL &kp LT    &kp GT    &kp SPACE &kp CARET &kp PLUS  &kp STAR &kp COMMA &kp DOT   &kp FSLH  &trans
                                  &trans    &trans    &trans    &trans    &trans   &trans
             >;
         };
