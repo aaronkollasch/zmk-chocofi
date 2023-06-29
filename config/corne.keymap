@@ -485,13 +485,13 @@
             label = "SYM";
 // -----------------------------------------------------------------------------------------
 // |  TAB |  `  |  @  |  #  |  $  |  %  |   |  &  | "|" |  (  |  )  |  :  | BKSP |
-// |  ESC |  ~  |  !  |  =  |  _  |Resrv|   |  -  |  \  |  [  |  ]  |  '  |  \   |
-// | SHFT |  =  |  <  |  >  |Resrv|  ^  |   |  +  |  *  |  {  |  }  |  "  | "|"  |
+// |  ESC |  ~  |  !  |  =  |  _  |  G  |   |  -  |  \  |  [  |  ]  |  '  |  \   |
+// | SHFT |  =  |  <  |  >  |  D  |  ^  |   |  +  |  *  |  {  |  }  |  "  | "|"  |
 //                    |     | NUM |     |   |     |     |     |
             bindings = <
    &kp  TAB  &kp GRAVE &kp AT   &kp HASH  &kp DLLR  &kp PRCNT &kp AMPS  &kp PIPE &kp LPAR &kp RPAR &kp COLON &kp BSPC
-   &kp  ESC  &kp TILDE &kp EXCL &kp EQUAL &kp UNDER &trans    &kp MINUS &kp BSLH &kp LBKT &kp RBKT &kp SQT   &kp BSLH
-   &kp LSHFT &kp EQUAL &kp LT   &kp GT    &trans    &kp CARET &kp PLUS  &kp STAR &kp LBRC &kp RBRC &kp DQT   &kp PIPE
+   &kp  ESC  &kp TILDE &kp EXCL &kp EQUAL &kp UNDER &kp G     &kp MINUS &kp BSLH &kp LBKT &kp RBKT &kp SQT   &kp BSLH
+   &kp LSHFT &kp EQUAL &kp LT   &kp GT    &kp D     &kp CARET &kp PLUS  &kp STAR &kp LBRC &kp RBRC &kp DQT   &kp PIPE
                                 &trans    &trans    &trans    &trans &trans &trans
             >;
         };
