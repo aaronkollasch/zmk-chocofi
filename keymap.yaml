@@ -1,0 +1,70 @@
+layout:
+  qmk_keyboard: corne_rotated
+  qmk_layout: LAYOUT_split_3x5_3
+layers:
+  DEF:
+    - [Q, W, F, P, B, J, L, U, Y, ;]
+    - [A, R, S, T, G, M, N, E, I, O]
+    - [Z, X, C, D, V, K, H, {h: ",", s: "\""}, {h: ".", s: "'"}, /]
+    - {h: Ctrl, t: Repeat}
+    - NAV
+    - Shift (sticky)
+    - {h: NAV, t: Space}
+    - {h: SYM, t: Space}
+    - {h: FUN, t: Bspace}
+  SYM:
+    - ["`", "@", "#", "$", "%", "&", "|", "(", ")", ":"]
+    - ["~", "!", "=", "_", "G", "-", "\\", "[", "]", "'"]
+    - ["=", "<", ">", "D", "^", "+", "*", "{", "}", "\""]
+    - {h: Ctrl, t: Repeat}
+    - NUM
+    - Shift (sticky)
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+  NAV:
+    - ["Win Next", "App Next", "Tab Prev", "Tab Next", "Tab New", Home, "Page Down", "Page Up", End, "Desk Prev"]
+    - [Shift, Ctrl, Alt, Gui, "Win Close", Left, Down, Up, Right, Enter]
+    - ["Undo", "Redo", "Copy", "Paste", "VIM (toggle)", "Page Prev", Delete, null, "Page Next", "Desk Next"]
+    - {t: SYS (sticky)}
+    - {type: held}
+    - {type: trans}
+    - {t: Space, h: MOU}
+    - {h: NUM, t: Space}
+    - {h: FUN, t: Bspace}
+  NUM:
+    - [Shift, Ctrl, Alt, Gui, "%", "-", Gui, Alt, Ctrl, Shift]
+    - [6, 4, 2, 0, 8, 9, 1, 3, 5, 7]
+    - ["=", "<", ">", Space, "^", "+", "*", ",", ".", "/"]
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+    - {type: trans}
+    - {type: held}
+    - {type: trans}
+  FUN:
+    - [F6, F4, F2, F10, F8, F9, F1, F3, F5, F7]
+    - [Shift, Ctrl, Alt, Gui, F12, F11, Gui, Alt, Ctrl, Shift]
+    - ["Bright Down", "Bright Up", {type: trans}, {type: trans}, {type: trans}, Prev, Play, Next, "Vol Down", "Vol Up"]
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - Mute
+    - {type: trans}
+    - {type: held}
+  SYS:
+    - ["BT Clear", null, "DEF", "DEF OSX", "QWERTY (toggle)", null, null, null, null, null]
+    - [BT3, BT2, "PC (BT1)", "Mac (BT0)", Reset, Reset, null, null, null, null]
+    - [BT4, null, null, null, null, null, null, null, null, null]
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+    - {type: trans}
+combos:
+  - {p: [1, 2], k: Tab, l: ["DEF"]}
+  - {p: [20, 21], k: VIM, l: ["DEF"]}
+  - {p: [21, 22], k: Esc, l: ["DEF"]}
+  - {p: [7, 8],   k: Bsp, l: ["NUM", "FUN"]}
+  - {p: [27, 28], k: Ent, l: ["DEF"]}
