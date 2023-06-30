@@ -11,9 +11,9 @@ following features:
 - Display widget showing which modifiers are currently active
 
 ## Inspirations
-- [callum](https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum)
-- [nickfaraco](https://github.com/nickfaraco/zmk-config)
-- [Designing a Symbol Layer](https://getreuer.info/posts/keyboards/symbol-layer/index.html)
+- [Callum Oakley](https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum)
+- [Nick Faraco](https://github.com/nickfaraco/zmk-config)
+- [Pascal Getreuer](https://getreuer.info/posts/keyboards/symbol-layer/index.html)
 - [Ben Vallack](https://www.youtube.com/watch?v=8wZ8FRwOzhU)
 
 ## Reference layout
