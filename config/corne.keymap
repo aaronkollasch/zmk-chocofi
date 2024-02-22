@@ -64,7 +64,6 @@
     )
 #define TOG_VIM_KEY_NOCTRL(key) \
     tog_vim_noc_##key: tog_vim_noc_##key { \
-            label = ZMK_MACRO_STRINGIFY(ZM_TOG_VIM_NOC_ ## key); \
             compatible = "zmk,behavior-mod-morph"; \
             #binding-cells = <0>; \
             bindings = <&tog_vim_##key>, <&kp key>; \
@@ -106,7 +105,6 @@
 
     macros {
         // esc_space: esc_space {
-        //     label = "ZM_esc_space";
         //     compatible = "zmk,behavior-macro";
         //     #binding-cells = <0>;
         //     bindings
@@ -116,7 +114,6 @@
         //         ;
         // };
         next_win: next_win {
-            label = "ZM_next_win";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -127,7 +124,6 @@
                 ;
         };
         next_app: next_app {
-            label = "ZM_next_app";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -138,7 +134,6 @@
                 ;
         };
         next_app_win: next_app_win {
-            label = "ZM_next_app_win";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -149,7 +144,6 @@
                 ;
         };
         pluseq: pluseq {
-            label = "ZM_plus_equals";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -180,7 +174,6 @@
     behaviors {
         // bspc_del: backspace_delete {
         //     compatible = "zmk,behavior-mod-morph";
-        //     label = "BACKSPACE_DELETE";
         //     #binding-cells = <0>;
         //     bindings = <&kp BACKSPACE>, <&kp DELETE>;
         //     mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -188,7 +181,6 @@
         // };
         comma_dqt: comma_double_quote {
             compatible = "zmk,behavior-mod-morph";
-            label = "COMMA_DOUBLE_QUOTE";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp DQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -196,7 +188,6 @@
         };
         dot_sqt: dot_single_quote {
             compatible = "zmk,behavior-mod-morph";
-            label = "DOT_SINGLE_QUOTE";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp SQT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -204,7 +195,6 @@
         };
         // comma_sqt: comma_single_quote {
         //     compatible = "zmk,behavior-mod-morph";
-        //     label = "COMMA_SINGLE_QUOTE";
         //     #binding-cells = <0>;
         //     bindings = <&kp COMMA>, <&kp SQT>;
         //     mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -212,7 +202,6 @@
         // };
         // dot_dqt: dot_double_quote {
         //     compatible = "zmk,behavior-mod-morph";
-        //     label = "DOT_DOUBLE_QUOTE";
         //     #binding-cells = <0>;
         //     bindings = <&kp DOT>, <&kp DQT>;
         //     mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -220,7 +209,6 @@
         // };
         undo_w: undo_w {
             compatible = "zmk,behavior-mod-morph";
-            label = "UNDO_W";
             #binding-cells = <0>;
             bindings = <&kp undo>, <&kp W>;
             mods = <(MOD_RGUI)>;
@@ -228,7 +216,6 @@
         };
         redo_q: redo_q {
             compatible = "zmk,behavior-mod-morph";
-            label = "REDO_Q";
             #binding-cells = <0>;
             bindings = <&kp redo>, <&kp Q>;
             mods = <(MOD_RGUI)>;
@@ -236,7 +223,6 @@
         };
         undo_w_osx: undo_w_osx {
             compatible = "zmk,behavior-mod-morph";
-            label = "UNDO_W_OSX";
             #binding-cells = <0>;
             bindings = <&kp undo_OSX>, <&kp W>;
             mods = <(MOD_RGUI)>;
@@ -244,7 +230,6 @@
         };
         redo_q_osx: redo_q_osx {
             compatible = "zmk,behavior-mod-morph";
-            label = "REDO_Q_OSX";
             #binding-cells = <0>;
             bindings = <&kp redo_OSX>, <&kp Q>;
             mods = <(MOD_RGUI)>;
@@ -253,7 +238,6 @@
 
         // espmod: esc_space_mod {
         //     compatible = "zmk,behavior-hold-tap";
-        //     label = "ESC_SPACE_MOD";
         //     #binding-cells = <2>;
         //     flavor = "hold-preferred";
         //     tapping-term-ms = <400>;
@@ -262,7 +246,6 @@
         // };
         skht: sticky_key_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "STICKY_KEY_HOLD_TAP";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <150>;
@@ -270,7 +253,6 @@
         };
         lthp: layer_tap_hold_preferred {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_HOLD_PREFERRED";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
@@ -278,7 +260,6 @@
         };
         ltb: layer_tap_balanced {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_BALANCED";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <150>;
@@ -287,7 +268,6 @@
         };
         // ltbr: layer_tap_balanced_repeat {
         //     compatible = "zmk,behavior-hold-tap";
-        //     label = "LAYER_TAP_BALANCED_REPEAT";
         //     #binding-cells = <2>;
         //     flavor = "balanced";
         //     tapping-term-ms = <150>;
@@ -295,7 +275,6 @@
         // };
         htbr: hold_tap_balanced_repeat {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_BALANCED_REPEAT";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
@@ -303,7 +282,6 @@
         };
 
         pc_connect: pc_connect{
-            label = "ZM_PC_CONNECT";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <100>;
@@ -311,7 +289,6 @@
             bindings = <&bt BT_SEL 1 &to DEF>;
         };
         osx_connect: osx_connect{
-            label = "ZM_OSX_CONNECT";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <100>;
@@ -322,7 +299,6 @@
         // vim-specific bindings
         lttogsp: layer_tap_toggle_space {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TOGGLE_SPACE";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <150>;
@@ -376,7 +352,7 @@
         compatible = "zmk,keymap";
 // Colemak-DH
         default_layer {
-            label = "DEF";
+            display-name = "DEF";
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q   |  W  |  F  |  P  |  B   |   |  J  |  L  |  U  |  Y  |  ;  | BKSP |
 // |  ESC |  A   |  R  |  S  |  T  |  G   |   |  M  |  N  |  E  |  I  |  O  |  '   |
@@ -391,7 +367,7 @@
         };
 
         default_osx_layer {
-            label = "DX";
+            display-name = "DX";
 // -----------------------------------------------------------------------------------------
 // |      |      |     |     |     |      |   |     |     |     |     |     |      |
 // |      |      |     |     |     |      |   |     |     |     |     |     |      |
@@ -407,7 +383,7 @@
 
 // Qwerty
         default_qwerty_layer {
-            label = "QWE";
+            display-name = "QWE";
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q   |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BKSP |
 // |  ESC |  A   |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '   |
@@ -422,7 +398,7 @@
         };
 
         vim_layer {
-            label = "VIM";
+            display-name = "VIM";
 // -----------------------------------------------------------------------------------------
 // |      |        |  W  |        | Preview |  B  |   | C-I | C-D | C-U | C-O |        |      |
 // |      | A+EXIT |     | S+EXIT | Stage   |  G  |   |  H  |  J  |  K  |  L  | :+EXIT |      |
@@ -437,7 +413,7 @@
         };
 
         nav_layer {
-            label = "NAV";
+            display-name = "NAV";
 // -----------------------------------------------------------------------------------------
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | NEW TAB |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | CLOSE   |  | LFT  | DWN  | UP   | RGT | ENT     |      |
@@ -452,7 +428,7 @@
         };
 
         nav_right_layer {
-            label = "NAV";
+            display-name = "NAV";
 // -----------------------------------------------------------------------------------------
 // | TAB  | NEXT WIN | NEXT APP | TAB LFT | TAB RGT | NEW TAB |  | HOME | PGDN | PGUP | END | SCR LFT | BKSP |
 // | ESC  | SHFT     | CTRL     | ALT     | CMD     | CLOSE   |  | LFT  | DWN  | UP   | RGT | ENT     |      |
@@ -467,7 +443,7 @@
         };
 
         nav_osx_layer {
-            label = "NAV";
+            display-name = "NAV";
 // -----------------------------------------------------------------------------------------
 // |      |      |      |      |       | NEW TAB |  |      |      |      |      | SCR LFT |      |
 // |      |      |      |      |       | CLOSE   |  |      |      |      |      |         |      |
@@ -482,7 +458,7 @@
         };
 
         sym_layer {
-            label = "SYM";
+            display-name = "SYM";
 // -----------------------------------------------------------------------------------------
 // |  TAB |  `  |  @  |  #  |  $  |  %  |   |  &  | "|" |  (  |  )  |  :  | BKSP |
 // |  ESC |  ~  |  !  |  =  |  _  |  G  |   |  -  |  \  |  [  |  ]  |  '  |  \   |
@@ -497,7 +473,7 @@
         };
 
         num_layer {
-            label = "NUM";
+            display-name = "NUM";
 // -----------------------------------------------------------------------------------------
 // |  TAB | SHFT| CTRL | ALT | CMD |  %  |   |  -  | CMD | CTRL| ALT | SHFT| BKSP |
 // |  ESC |  7  |  8   |  9  |  0  |  6  |   |  5  |  1  |  2  |  3  |  4  |      |
@@ -512,7 +488,7 @@
         };
 
         fun_layer {
-            label = "FN";
+            display-name = "FN";
 // -----------------------------------------------------------------------------------------
 // |  TAB | F7     | F8     | F9  | F10 | F6  |   | F5   | F1   | F2   | F3     | F4     | BKSP |
 // |  ESC | SHFT   | CTRL   | ALT | CMD | F12 |   | F11  | CMD  | ALT  | CTRL   | SHFT   |      |
@@ -527,7 +503,7 @@
         };
 
         mouse_layer {
-            label = "MOU";
+            display-name = "MOU";
 // -----------------------------------------------------------------------------------------
 // |      |      |      |     |     | ACC 2 |   | SCL UP | SCL LFT | MOU UP | SCL RGT |      |      |
 // |  ESC | SHFT | CTRL | ALT | CMD | ACC 1 |   | SCL DN | MOU LFT | MOU DN | MOU RGT |      |      |
@@ -542,7 +518,7 @@
         };
 
         sys_layer {
-            label = "SYS";
+            display-name = "SYS";
 // -----------------------------------------------------------------------------------------
 // |     |BTCLR|     | DEF        | DEF_OSX     | QWERTY |   |       |      |      |     |     |     |
 // |     | BT3 | BT2 | PC connect | OSX connect | Reset  |   | Reset |      |      |     |     |     |
