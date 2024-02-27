@@ -143,14 +143,6 @@
                 , <&macro_release &kp RGUI>
                 ;
         };
-        pluseq: pluseq {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp PLUS>
-                , <&macro_tap &kp EQUAL>
-                ;
-        };
 
         // vim macros
         TOG_VIM_KEY(SPACE)
@@ -339,12 +331,6 @@
             // conflicts with SYM layer "{}"
             layers = <DEF DEF_OSX DEF_QWE VIM NAV NAV_RGT NAV_OSX NUM FUN>;
             bindings = <&kp RET>;
-        };
-        combo_pluseq {
-            key-positions = <15 30>;
-            timeout-ms = <200>;
-            layers = <SYM>;
-            bindings = <&pluseq>;
         };
     };
 
