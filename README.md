@@ -20,4 +20,4 @@ following features:
 
 ![3x5 layout](chocofi.svg)
 
-(Visualization generated with [@caksoylar/keymap](https://github.com/caksoylar/keymap-drawer))
+(Visualization generated with [@caksoylar/keymap-drawer](https://github.com/caksoylar/keymap-drawer))
